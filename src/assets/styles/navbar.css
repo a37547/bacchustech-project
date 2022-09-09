@@ -1,0 +1,49 @@
+.logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.hamburger-menu {
+  position: absolute;
+  left: 0;
+}
+
+@media (min-width: 992px) {
+  .logo {
+    position: relative;
+  }
+
+  .hamburger-menu {
+    left: 220px;
+  }
+}
+
+.sidebar {
+  position: relative;
+  width: 0;
+  min-width: 0;
+  height: 0;
+}
+
+.sidebar.active {
+  transition: ease-in 0.2s;
+  width: 270px;
+  min-width: 270px;
+  min-height: calc(100vh - 65px);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  z-index: 10;
+}
+
+.pro-sidebar > .pro-sidebar-inner {
+  background-color: white;
+}
+
+
+.nav-link{
+  color: black !important
+}
+
+.profile-name{
+  display: none;
+}

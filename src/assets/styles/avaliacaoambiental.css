@@ -1,0 +1,28 @@
+.sidebar-open {
+  position: absolute;
+  left: 0px;
+  top: 60px;
+  width: 100vw;
+}
+
+.sidebar-closed {
+  position: absolute;
+  left: 0px;
+  top: 60px;
+  width: 100vw;
+}
+
+@media (min-width: 768px) {
+  .sidebar-open {
+    left: 270px;
+    width: calc(100vw - 270px) !important;
+  }
+}
+
+.nav-item{
+  flex: 1;
+}
+
+.tab-content{
+  width: 100%;
+}

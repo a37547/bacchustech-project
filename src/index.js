@@ -5,10 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
+import AppProvider, { AppContext } from "./context/appContext";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
+  <BrowserRouter /*basename={process.env.PUBLIC_URL}*/>
+    <AppProvider>
+      <App />
+    </AppProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

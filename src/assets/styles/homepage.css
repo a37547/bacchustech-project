@@ -1,0 +1,34 @@
+.card-row {
+  margin: 0;
+}
+
+@media (min-width: 1200px) {
+  .card-row {
+    margin: 0px 75px !important;
+  }
+}
+
+.image{
+  width: 100%;
+  height: 300px;
+}
+
+.image-container{
+  display: none;
+}
+
+@media (min-width: 992px){
+  .image{
+    width: 85%;
+  }
+}
+
+@media (min-width: 768px){
+  .image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

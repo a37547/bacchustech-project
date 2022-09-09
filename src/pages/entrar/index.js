@@ -1,99 +1,146 @@
-import React, { Component } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
-import AppNavbar from "../../navbar";
-import banner3 from "../../banner3.jpg";
-import { Link } from "react-router-dom";
+import React, { Component, Fragment, useContext, useState } from "react";
+import {
+  Alert,
+  Button,
+  Col,
+  Form,
+  FormGroup,
+  Image,
+  Modal,
+  ModalBody,
+  Row,
+  Spinner,
+} from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { AppContext } from "../../context/appContext";
+import logo from "../../assets/images/logo.png";
+import "../../assets/styles/entrar.css";
+import banner from "../../assets/images/banner.jpg";
+import axios from "axios";
+import Cookie from "js-cookie";
+import * as jose from "jose";
 
-class Entrar extends Component {
-  state = {};
-  render() {
-    return (
-      <div>
-        <AppNavbar />
-        <Row
-          style={{ height: "calc(100vh - 60px)", backgroundColor: "#f3fff2" }}
-          className="m-0 d-flex justify-content-center align-items-center"
+const Entrar = (props) => {
+  const context = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const [spinner, setSpinner] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState(null);
+
+  return (
+    <Row
+      style={{ height: "100vh", maxHeight: "100vh" }}
+      className="m-0 py-0 px-3 px-lg-0"
+    >
+      <Col
+        lg={4}
+        className="d-none d-lg-block p-0"
+        style={{ height: "100%", maxHeight: "100%" }}
+      >
+        <Image
+          src={banner}
+          width="100%"
+          height="100%"
+          style={{ objectFit: "cover" }}
+        />
+      </Col>
+      <Col lg={8} className="d-flex flex-column justify-content-center px-lg-5">
+        <span
+          style={{
+            fontFamily: "Bad Script",
+            textTransform: "uppercase",
+            fontWeight: "600",
+            color: "#578554",
+            paddingBottom: "40px",
+          }}
         >
-          <div
-            style={{
-              width: "75%",
-              height: "75%",
-              boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-            }}
-            className="bg-white d-flex"
-          >
-            <Col
-              md={6}
-              className="d-flex flex-column align-items-around justify-content-center px-5"
-            >
-              <div
-                className="d-flex justify-content-center my-3"
-                style={{ height: "75%" }}
-              >
-                <img src={banner3} style={{ height: "100%" }} />
-              </div>
-            </Col>
-            <Col md={6} className="d-flex flex-column justify-content-center">
-              <span
-                className="text-center"
-                style={{ fontSize: "1.7rem", fontWeight: "600" }}
-              >
-                Bacchutech
-              </span>
-              <span
-                className="text-center my-3"
-                style={{ fontSize: "1.2rem", fontWeight: "600" }}
-              >
-                Bem-vindo
-              </span>
-              <Form className="d-flex flex-column align-items-center my-3">
-                <Form.Group className="mb-3 w-75" controlId="formBasicEmail">
-                  <Form.Label>Nome de utilizador</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Inserir nome de utilizador"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3 w-75" controlId="formBasicPassword">
-                  <Form.Label>Palavra-passe</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Inserir palavra-passe"
-                  />
-                </Form.Group>
-                <span>Esqueceu-se da palavra-passe?</span>
-
-                <Button
-                  style={{ backgroundColor: "#466144" }}
-                  type="submit"
-                  className="my-3 px-5"
-                >
-                  <Link
-                    to="/introducaodedados"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    Entrar
-                  </Link>
-                </Button>
-              </Form>
-              <div className="text-center">
-                <span>
-                  Não tem uma conta?{" "}
-                  <Link
-                    to="/registar"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    Registe-se
-                  </Link>
-                </span>
-              </div>
-            </Col>
-          </div>
+          Bacchustech
+        </span>
+        <div className="d-flex flex-column mb-3">
+          <span style={{ fontFamily: "Sora" }}>
+            Por favor, entre na sua conta.
+          </span>
+          <span style={{ fontFamily: "Sora" }}>
+            Não tem uma conta? <Link to="/register">Registe-se.</Link>
+          </span>
+        </div>
+        <Row>
+          <Col xs={12} md={6}>
+            <FormGroup className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.currentTarget.value)}
+              />
+            </FormGroup>
+          </Col>
+          <Col xs={12} md={6}>
+            <FormGroup className="mb-3">
+              <Form.Label>Palavra-passe</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Palavra-passe"
+                onChange={(e) => setPassword(e.currentTarget.value)}
+              />
+            </FormGroup>
+          </Col>
         </Row>
-      </div>
-    );
-  }
-}
+
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Manter-me logado" />
+        </Form.Group>
+
+        {error != null && <Alert variant="danger">{error}</Alert>}
+
+        <hr />
+        <div className="mt-2 d-flex justify-content-end align-items-center">
+          <span>Recuperar palavra-passe</span>
+          <Button
+            style={{
+              backgroundColor: "#578554",
+              marginLeft: "20px",
+              paddingLeft: "50px",
+              paddingRight: "50px",
+              borderRadius: "20px",
+            }}
+            onClick={async () => {
+              await axios
+                .post("http://localhost:5000/api/users/login", {
+                  email: email,
+                  password: password,
+                })
+                .then((res) => {
+                  if (res.data.Result === 0) {
+                    if (res.data.Success) {
+                      Cookie.set("token", res.data.Token);
+                      setError(null);
+
+                      context.setLoggedUser(
+                        jose.decodeJwt(res.data.Token).user
+                      );
+
+                      //context.setUser(res.data.User);
+                      navigate("/introducaodedados");
+                    }
+                  } else {
+                    setError("Dados incorretos");
+                  }
+                });
+            }}
+          >
+            Login
+          </Button>
+        </div>
+      </Col>
+    </Row>
+  );
+};
 
 export default Entrar;
