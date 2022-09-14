@@ -17,3 +17,15 @@ export async function getMaterialsByYearAndCompany(year, company) {
     }
   );
 }
+
+export async function getEnergyUsedInMaterialsLogisticByYearAndCompany(
+  year,
+  company
+) {
+  return await axios.get(
+    "http://localhost:5000/api/users/getEnergyUsedInMaterialsLogisticByYearAndCompany",
+    {
+      params: { year: year, company_name: company },
+    }
+  );
+}

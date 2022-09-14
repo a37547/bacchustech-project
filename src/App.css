@@ -1,3 +1,7 @@
 .pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
   background-color: red;
 }
+
+.form-label{
+  font-weight: bold;
+}

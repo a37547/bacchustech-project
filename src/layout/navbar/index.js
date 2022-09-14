@@ -58,7 +58,7 @@ const AppNavbar = () => {
           </Navbar.Brand>
         </Link>
         <FontAwesomeIcon
-          className="d-md-none"
+          className="d-lg-none"
           icon={faBars}
           size="2x"
           onClick={handleOffcanvasShow}
@@ -162,7 +162,7 @@ const AppNavbar = () => {
         )}
 
         {isLoggedIn && (
-          <div className="d-none d-md-flex">
+          <div className="d-none d-lg-flex">
             <Link
               to="/introducaodedados"
               style={{ textDecoration: "none", color: "black" }}
