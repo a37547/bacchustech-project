@@ -1,42 +1,42 @@
-#header-container{
-    height: 125px;
-    background-color: white;
-    border-top: 1px solid black;
+#header-container {
+  height: 125px;
+  background-color: white;
+  border-top: 1px solid black;
 }
 
-#edit-icon{
-    font-size: 24px;
-    margin-right: 4px;
+#edit-icon {
+  font-size: 24px;
+  margin-right: 4px;
 }
 
-#header-title{
-    font-size: 1.2rem;
-    font-family: Helvetica;
+#header-title {
+  font-size: 1.3em;
+  font-family: Helvetica;
 }
 
-#header-btn{
-    padding: 0.1rem 0.5rem;
-    font-size: 0.9rem;
-    background-color: rgb(80, 116, 77);
-    color: white
+#header-btn {
+  padding: 0.1rem 0.5rem;
+  font-size: 0.7rem;
+  background-color: rgb(80, 116, 77);
+  color: white;
 }
 
-#warning-icon{
-    font-size: 24px;
+#warning-icon {
+  font-size: 24px;
 }
 
-@media (min-width: 992px) { 
-    #header-container{
-        height: 90px;
-    }
-
-    #header-btn{
-        padding: 0.4rem 0.8rem;
-        margin-right: 15px;
-        font-size: 1rem;
-    }
- }
-
- .dropdown-item:active{
-    background-color: rgb(80, 116, 77);
+@media (min-width: 992px) {
+  #header-container {
+    height: 90px;
   }
+
+  #header-btn {
+    padding: 0.4rem 0.8rem;
+    margin-right: 15px;
+    font-size: 0.9rem;
+  }
+}
+
+.dropdown-item:active {
+  background-color: rgb(80, 116, 77);
+}

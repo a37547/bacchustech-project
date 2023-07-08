@@ -8,7 +8,6 @@ import Entrar from "./pages/entrar";
 import ProtectedRoute from "./context/protectedRoute";
 import IndicadoresAmbientais from "./pages/indicadoresambientais";
 import Planeamento from "./pages/planeamento";
-import Relatorios from "./pages/relatorios";
 import GestaoDeUtilizadores from "./pages/gestaodeutilizadores";
 import AdicionarUtilizador from "./pages/adicionarutilizador";
 import { Component } from "react";
@@ -19,6 +18,7 @@ import PasswordChange from "./pages/passwordChange";
 import RegistrationApprove from "./pages/gestaodeutilizadores";
 import Register from "./pages/register";
 import SomethingWentWrong from "./pages/somethingWentWrong";
+import Relatorios from "./pages/reports";
 
 class App extends Component {
   static contextType = AppContext;

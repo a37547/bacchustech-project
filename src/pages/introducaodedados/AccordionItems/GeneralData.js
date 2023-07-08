@@ -4,11 +4,24 @@ import { AppContext } from "../../../context/appContext";
 import { getGeneralDataByYearAndCompany } from "../../../services/generalData";
 import "react-toastify/dist/ReactToastify.css";
 
+const Joi = require("joi");
+
+export const generalDataSchema = Joi.object({
+  totalGrapesProduced: Joi.number().precision(1).allow("", null).messages({
+    "number.base": "Formato inválido. Deve ser um número.",
+  }),
+  totalGrapesBought: Joi.number().precision(1).allow("", null),
+  totalMustProducedFromGrapes: Joi.number().precision(1).allow("", null),
+  totalMustPurchased: Joi.number().allow("", null),
+  totalMustFermented: Joi.number().precision(1).allow("", null),
+  totalWineProduced: Joi.number().precision(1).allow("", null),
+});
+
 const GeneralData = () => {
   const context = useContext(AppContext);
 
   useEffect(() => {
-    getGeneralDataByYearAndCompany(
+    /*getGeneralDataByYearAndCompany(
       context.selectedYear && context.selectedYear["year"],
       context.loggedUser && context.loggedUser["company"]
     ).then((res) => {
@@ -19,11 +32,11 @@ const GeneralData = () => {
         context.setTotalMustFermented(res.data.Data["total_must_fermented"]);
         context.setBrix(res.data.Data["brix"]);
         context.setTotalWineProduced(res.data.Data["total_wine_produced"]);
-        context.setWineProducedByGrapesPercentage(
-          res.data.Data["wine_produced_by_grapes_percentage"]
+        context.setWineProducedByGrapes(
+          res.data.Data["wine_produced_by_grapes"]
         );
-        context.setWineProducedByMustPercentage(
-          res.data.Data["wine_produced_by_must_percentage"]
+        context.setWineProducedByMust(
+          res.data.Data["wine_produced_by_must"]
         );
 
         console.log("General data exists");
@@ -34,28 +47,28 @@ const GeneralData = () => {
         context.setTotalMustFermented("");
         context.setBrix("");
         context.setTotalWineProduced("");
-        context.setWineProducedByGrapesPercentage("");
-        context.setWineProducedByMustPercentage("");
+        context.setWineProducedByGrapes("");
+        context.setWineProducedByMust("");
         console.log("General data does not exist");
       }
-    });
+    });*/
   }, []);
 
   return (
-    <Tabs defaultActiveKey="wine" id="generalDataTab" className="mb-3">
+    <Tabs defaultActiveKey="grapes" id="generalDataTab" className="mb-3">
       <Tab eventKey="grapes" title="Uvas">
         <Row className="mb-3">
           <Col>
             <span
               style={{
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 fontStyle: "italic",
               }}
             >
               <span
                 style={{
                   color: "rgb(80, 116, 77)",
-                  fontSize: "1rem",
+                  fontSize: "1.1rem",
                   marginRight: "5px",
                   fontStyle: "italic",
                   fontWeight: "bold",
@@ -63,8 +76,9 @@ const GeneralData = () => {
               >
                 Importante:
               </span>
-              Preencha com o valor da quantidade total de uvas utilizadas no
-              ano. Formato: XX,X toneladas
+              Preencha com os valores das quantidades de uvas processadas na
+              empresa no ano, sem diferenciar o tipo de uva. Formato: XX,X
+              toneladas
             </span>
           </Col>
         </Row>
@@ -75,15 +89,35 @@ const GeneralData = () => {
                 <Col md={6} lg={4}>
                   <Form.Label>
                     <span style={{ fontWeight: "bold" }}>
-                      Total utilizado no ano (toneladas)
+                      Uvas produzidas e utilizadas pela própria empresa no ano
                     </span>
                   </Form.Label>
                   <Form.Control
-                    name="totalGrapesUsed"
+                    name="totalGrapesProduced"
                     size="sm"
-                    value={context.totalGrapesUsed}
+                    placeholder="XX,X toneladas"
+                    value={context.totalGrapesProduced}
                     onChange={(e) =>
-                      context.setTotalGrapesUsed(
+                      context.setTotalGrapesProduced(
+                        e.currentTarget.value.toString()
+                      )
+                    }
+                  />
+                </Col>
+                <Col md={6} lg={4}>
+                  <Form.Label>
+                    <span style={{ fontWeight: "bold" }}>
+                      Uvas compradas de terceiros e utilizada pela empresa no
+                      ano
+                    </span>
+                  </Form.Label>
+                  <Form.Control
+                    name="totalGrapesBought"
+                    size="sm"
+                    placeholder="XX,X toneladas"
+                    value={context.totalGrapesBought}
+                    onChange={(e) =>
+                      context.setTotalGrapesBought(
                         e.currentTarget.value.toString()
                       )
                     }
@@ -99,14 +133,14 @@ const GeneralData = () => {
           <Col>
             <span
               style={{
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 fontStyle: "italic",
               }}
             >
               <span
                 style={{
                   color: "rgb(80, 116, 77)",
-                  fontSize: "1rem",
+                  fontSize: "1.1rem",
                   marginRight: "5px",
                   fontStyle: "italic",
                   fontWeight: "bold",
@@ -114,11 +148,10 @@ const GeneralData = () => {
               >
                 Importante:
               </span>
-              Caso a sua empresa compre mosto para vinificação, preencha com o
-              valor da quantidade total de mosto comprado no ano. Formato: XX,X
-              toneladas. O Brix é um dado importante para o cálculo de liberação
-              natural de CO2 durante a fermentação. Você pode indicar um ºBrix
-              médio.
+              Preencha os valores relativos ao mosto produzido a partir das uvas
+              e, caso sua empresa compre mosto, o volume de mosto comprado
+              utilziado no ano. Formato: XX,X hl. Insira também o volume total
+              de mosto fermentado.
             </span>
           </Col>
         </Row>
@@ -126,15 +159,16 @@ const GeneralData = () => {
           <Col>
             <Form.Group controlId="must">
               <Row>
-                <Col md={6} lg={4} className="mb-4 mb-lg-0">
+                <Col md={6} lg={3} className="mb-4 mb-lg-4">
                   <Form.Label>
                     <span style={{ fontWeight: "bold" }}>
-                      Total adquirido no ano
+                      Total comprado no ano
                     </span>
                   </Form.Label>
                   <Form.Control
                     name="totalMustPurchased"
                     size="sm"
+                    placeholder="XX,X hl"
                     value={context.totalMustPurchased}
                     onChange={(e) =>
                       context.setTotalMustPurchased(
@@ -143,7 +177,7 @@ const GeneralData = () => {
                     }
                   />
                 </Col>
-                <Col md={6} lg={4} className="mb-4 mb-lg-0">
+                <Col md={6} lg={3} className="mb-4 mb-lg-4">
                   <Form.Label>
                     <span style={{ fontWeight: "bold" }}>
                       Total fermentado no ano
@@ -152,6 +186,7 @@ const GeneralData = () => {
                   <Form.Control
                     name="totalMustFemented"
                     size="sm"
+                    placeholder="XX,X hl"
                     value={context.totalMustFermented}
                     onChange={(e) =>
                       context.setTotalMustFermented(
@@ -160,16 +195,23 @@ const GeneralData = () => {
                     }
                   />
                 </Col>
-                <Col md={6} lg={4} className="mb-4 mb-lg-0">
+
+                <Col md={6} lg={6} className="mb-4 mb-lg-4">
                   <Form.Label>
-                    <span style={{ fontWeight: "bold" }}>ºBrix</span>
+                    <span style={{ fontWeight: "bold" }}>
+                      Total de mosto produzido no ano a partir das uvas (uva
+                      produzidas + comprada comprada)
+                    </span>
                   </Form.Label>
                   <Form.Control
-                    name="brix"
+                    name="totalMustProducedFromGrapes"
                     size="sm"
-                    value={context.brix}
+                    placeholder="XX,X hl"
+                    value={context.totalMustProducedFromGrapes}
                     onChange={(e) =>
-                      context.setBrix(e.currentTarget.value.toString())
+                      context.setTotalMustProducedFromGrapes(
+                        e.currentTarget.value.toString()
+                      )
                     }
                   />
                 </Col>
@@ -183,14 +225,14 @@ const GeneralData = () => {
           <Col>
             <span
               style={{
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 fontStyle: "italic",
               }}
             >
               <span
                 style={{
                   color: "rgb(80, 116, 77)",
-                  fontSize: "1rem",
+                  fontSize: "1.1rem",
                   marginRight: "5px",
                   fontStyle: "italic",
                   fontWeight: "bold",
@@ -200,9 +242,6 @@ const GeneralData = () => {
               </span>
               Preencha com o valor da quantidade total de vinho produzido no
               ano, sem diferenciar o tipo de vinho. Formato: XX,X hectolitros.
-              Caso sua empresa utilize uvas e mosto para vinificação, indique a
-              porcentagem do vinho produzido a partir de cada um deles. Formato:
-              XX,X %
             </span>
           </Col>
         </Row>
@@ -210,7 +249,7 @@ const GeneralData = () => {
           <Col>
             <Form.Group controlId="wine">
               <Row>
-                <Col md={6} lg={4} className="mb-4 mb-lg-0">
+                <Col md={6} lg={4} className="mb-4 mb-lg-4">
                   <Form.Label>
                     <span style={{ fontWeight: "bold" }}>
                       Produção total anual (hectolitros)
@@ -220,6 +259,7 @@ const GeneralData = () => {
                     type="number"
                     name="totalWineProduced"
                     size="sm"
+                    placeholder="XX,X hl"
                     value={context.totalWineProduced}
                     onChange={(e) =>
                       context.setTotalWineProduced(
@@ -228,40 +268,115 @@ const GeneralData = () => {
                     }
                   />
                 </Col>
+              </Row>
 
-                <Col md={6} lg={4} className="mb-4 mb-lg-0">
+              <Row>
+                <Col md={6} lg={4} className="mb-4">
                   <Form.Label>
                     <span style={{ fontWeight: "bold" }}>
-                      % de vinho produzido a partir das uvas
+                      Garrafas de vidro (0,35 L)
                     </span>
                   </Form.Label>
                   <Form.Control
                     type="number"
-                    name="wineProducedByGrapesPercentage"
+                    name="glassBottles35"
                     size="sm"
-                    value={context.wineProducedByGrapesPercentage}
+                    placeholder="XX,X hl"
+                    value={context.glassBottles35}
                     onChange={(e) =>
-                      context.setWineProducedByGrapesPercentage(
+                      context.setGlassBottles35(
                         e.currentTarget.value.toString()
                       )
                     }
                   />
                 </Col>
-                <Col md={6} lg={4} className="mb-4 mb-lg-0">
+
+                <Col md={6} lg={4} className="mb-4">
                   <Form.Label>
                     <span style={{ fontWeight: "bold" }}>
-                      % de vinho produzido a partir do mosto
+                      Garrafas de vidro (0,75 L)
                     </span>
                   </Form.Label>
                   <Form.Control
                     type="number"
-                    name="wineProducedByMustPercentage"
+                    name="glassBottles75"
                     size="sm"
-                    value={context.wineProducedByMustPercentage}
+                    placeholder="XX,X hl"
+                    value={context.glassBottles75}
                     onChange={(e) =>
-                      context.setWineProducedByMustPercentage(
+                      context.setGlassBottles75(
                         e.currentTarget.value.toString()
                       )
+                    }
+                  />
+                </Col>
+
+                <Col md={6} lg={4} className="mb-4">
+                  <Form.Label>
+                    <span style={{ fontWeight: "bold" }}>
+                      Garrafas de vidro (1 L)
+                    </span>
+                  </Form.Label>
+                  <Form.Control
+                    type="number"
+                    name="glassBottles100"
+                    size="sm"
+                    placeholder="XX,X hl"
+                    value={context.glassBottles100}
+                    onChange={(e) =>
+                      context.setGlassBottles100(
+                        e.currentTarget.value.toString()
+                      )
+                    }
+                  />
+                </Col>
+
+                <Col md={6} lg={4} className="mb-4">
+                  <Form.Label>
+                    <span style={{ fontWeight: "bold" }}>
+                      Garrafas PET (1 L)
+                    </span>
+                  </Form.Label>
+                  <Form.Control
+                    type="number"
+                    name="petBottles"
+                    size="sm"
+                    placeholder="XX,X hl"
+                    value={context.petBottles}
+                    onChange={(e) =>
+                      context.setPetBottles(e.currentTarget.value.toString())
+                    }
+                  />
+                </Col>
+
+                <Col md={6} lg={4} className="mb-4">
+                  <Form.Label>
+                    <span style={{ fontWeight: "bold" }}>Bag-in-box (3 L)</span>
+                  </Form.Label>
+                  <Form.Control
+                    type="number"
+                    name="bagInBox3"
+                    size="sm"
+                    placeholder="XX,X hl"
+                    value={context.bagInBox3}
+                    onChange={(e) =>
+                      context.setBagInBox3(e.currentTarget.value.toString())
+                    }
+                  />
+                </Col>
+
+                <Col md={6} lg={4} className="mb-4">
+                  <Form.Label>
+                    <span style={{ fontWeight: "bold" }}>Bag-in-box (5L)</span>
+                  </Form.Label>
+                  <Form.Control
+                    type="number"
+                    name="bagInBox5"
+                    size="sm"
+                    placeholder="XX,X hl"
+                    value={context.bagInBox5}
+                    onChange={(e) =>
+                      context.setBagInBox5(e.currentTarget.value.toString())
                     }
                   />
                 </Col>

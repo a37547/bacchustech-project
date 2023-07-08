@@ -122,6 +122,11 @@ const Entrar = (props) => {
                       Cookie.set("token", res.data.Token);
                       setError(null);
 
+                      localStorage.setItem(
+                        "loggedUserCompany",
+                        jose.decodeJwt(res.data.Token).user["company"]
+                      );
+
                       context.setLoggedUser(
                         jose.decodeJwt(res.data.Token).user
                       );

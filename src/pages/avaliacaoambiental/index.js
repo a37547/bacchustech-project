@@ -15,9 +15,9 @@ import { Bar, Chart, Pie } from "react-chartjs-2";
 import { AppContext } from "../../context/appContext";
 import AppNavbar from "../../layout/navbar";
 import IndicadoresAmbientais from "../indicadoresambientais";
-import Relatorios from "../relatorios";
 import faker from "@faker-js/faker";
 import "../../assets/styles/avaliacaoambiental.css";
+import Relatorios from "../reports";
 
 const data2 = {
   labels: [

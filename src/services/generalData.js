@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function getGeneralDataByYearAndCompany(year, company) {
   return await axios.get(
-    "http://localhost:5000/api/users/getGeneralDataByYearAndCompany",
+    "http://localhost:5000/api/generalData/getByYearAndCompany",
     {
       params: { year: year, company_name: company },
     }

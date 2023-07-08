@@ -70,53 +70,38 @@ const Energy = () => {
       context.selectedYear && context.selectedYear["year"],
       context.loggedUser && context.loggedUser["company"]
     ).then((res) => {
-      if (res.data.Data != null) {
-        context.setFirstEnergyInsertion(false);
-        context.setConsumedElectricityBought(
-          res.data.Data["consumed_electricity_bought"]
-        );
-        context.setNaturalGasBought(res.data.Data["natural_gas_bought"]);
-        context.setPumping(res.data.Data["pumping"]);
-        context.setFossilCogenerationBought(
-          res.data.Data["fossil_cogeneration_bought"]
-        );
-        context.setWindEnergyBought(res.data.Data["wind_energy_bought"]);
-        context.setWaterEnergyBought(res.data.Data["water_energy_bought"]);
-        context.setPhotovoltaicEnergyBought(
-          res.data.Data["photovoltaic_energy_bought"]
-        );
-        context.setBioenergyBought(res.data.Data["bioenergy_bought"]);
-        context.setConsumedElectricityProduced(
-          res.data.Data["consumed_electricity_produced"]
-        );
-        context.setPhotovoltaicEnergyProduced(
-          res.data.Data["photovoltaic_energy_produced"]
-        );
-        context.setBioenergyProduced(res.data.Data["bioenergy_produced"]);
-        context.setSurplusEntered(res.data.Data["surplus_entered"]);
-        context.setPhotovoltaicEnergyEntered(
-          res.data.Data["photovoltaic_energy_entered"]
-        );
-        context.setSimpleDiesel(res.data.Data["simple_diesel"]);
-        context.setAdditiveDiesel(res.data.Data["additive_diesel"]);
-        context.setPlainGasoline(res.data.Data["plain_gasoline"]);
-        context.setAdditiveGasoline(res.data.Data["additive_gasoline"]);
-        context.setBiofuel(res.data.Data["biofuel"]);
-        context.setHeatingOil(res.data.Data["heating_oil"]);
-        context.setButane(res.data.Data["butane"]);
-        context.setPropane(res.data.Data["propane"]);
-        context.setGpl(res.data.Data["gpl"]);
-        context.setNaturalGas(res.data.Data["natural_gas"]);
-        context.setCng(res.data.Data["cng"]);
-        context.setBiogas(res.data.Data["biogas"]);
-        context.setWood(res.data.Data["wood"]);
-        context.setPellets(res.data.Data["pellets"]);
-
-        console.log("Energy exists");
-      } else {
-        context.setFirstEnergyInsertion(true);
-        console.log("Energy does not exist");
-      }
+      if (res.data.Result == 0)
+        if (res.data.Data != null) {
+          context.setFirstEnergyInsertion(false);
+          context.setConsumedElectricityBought(
+            res.data.Data["consumed_electricity_bought"]
+          );
+          context.setNaturalGasBought(res.data.Data["natural_gas_bought"]);
+          context.setDieselBought(res.data.Data["diesel_bought"]);
+          context.setFuelOilBought(res.data.Data["fuel_oil_bought"]);
+          context.setNuclearBought(res.data.Data["nuclear_bought"]);
+          context.setCoalBought(res.data.Data["coal_bought"]);
+          context.setWindEnergyBought(res.data.Data["wind_energy_bought"]);
+          context.setHidrelectricBought(res.data.Data["hidrelectric_bought"]);
+          context.setSolarBought(res.data.Data["solar_bought"]);
+          context.setBiomassBought(res.data.Data["biomass_bought"]);
+          context.setBiogasBought(res.data.Data["biogas_bought"]);
+          context.setSolidWasteIncinerationBought(
+            res.data.Data["solid_waste_incineration_bought"]
+          );
+          context.setConsumedElectricityProduced(
+            res.data.Data["consumed_electricity_produced"]
+          );
+          context.setHidrelectricProduced(
+            res.data.Data["hidrelectric_produced"]
+          );
+          context.setSolarProduced(res.data.Data["solar_produced"]);
+          context.setBiomassProduced(res.data.Data["biomass_produced"]);
+          context.setBiogasProduced(res.data.Data["biogas_produced"]);
+          context.setSurplusEntered(res.data.Data["surplus_entered"]);
+        } else {
+          context.setFirstEnergyInsertion(true);
+        }
     });
   }, []);
 
@@ -154,7 +139,6 @@ const Energy = () => {
       id="energyTab"
       className="mb-3 d-flex flex-column flex-xxl-row"
       onSelect={(event) => {
-        console.log(event);
         if (event === "materialsFuel") {
           getEnergyUsedInMaterialsLogisticByYearAndCompany(
             context.selectedYear["year"],
@@ -289,13 +273,13 @@ const Energy = () => {
               </Col>
               <Col md={6} lg={4} className="mb-4">
                 <Form.Group controlId="formGridEmail">
-                  <Form.Label>Bombagem</Form.Label>
+                  <Form.Label>Gasóleo</Form.Label>
                   <Form.Control
                     name="pumping"
                     size="sm"
-                    value={context.pumping}
+                    value={context.dieselBought}
                     onChange={(e) =>
-                      context.setPumping(e.currentTarget.value.toString())
+                      context.setDieselBought(e.currentTarget.value)
                     }
                   />
                 </Form.Group>
@@ -303,14 +287,44 @@ const Energy = () => {
               <Col md={6} lg={4} className="mb-4">
                 <Form.Group controlId="formGridEmail">
                   <Form.Label>
-                    <span style={{ fontWeight: "bold" }}>Cogeração fóssil</span>
+                    <span style={{ fontWeight: "bold" }}>Fuelóleo</span>
                   </Form.Label>
                   <Form.Control
                     name="fossilCogenerationBought"
                     size="sm"
-                    value={context.fossilCogenerationBought}
+                    value={context.fuelOilBought}
                     onChange={(e) =>
-                      context.setFossilCogenerationBought(e.currentTarget.value)
+                      context.setFuelOilBought(e.currentTarget.value)
+                    }
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} lg={4} className="mb-4">
+                <Form.Group controlId="formGridEmail">
+                  <Form.Label>
+                    <span style={{ fontWeight: "bold" }}>Nuclear</span>
+                  </Form.Label>
+                  <Form.Control
+                    name="fossilCogenerationBought"
+                    size="sm"
+                    value={context.nuclearBought}
+                    onChange={(e) =>
+                      context.setNuclearBought(e.currentTarget.value)
+                    }
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} lg={4} className="mb-4">
+                <Form.Group controlId="formGridEmail">
+                  <Form.Label>
+                    <span style={{ fontWeight: "bold" }}>Carvão</span>
+                  </Form.Label>
+                  <Form.Control
+                    name="fossilCogenerationBought"
+                    size="sm"
+                    value={context.coalBought}
+                    onChange={(e) =>
+                      context.setCoalBought(e.currentTarget.value)
                     }
                   />
                 </Form.Group>
@@ -348,40 +362,70 @@ const Energy = () => {
               </Col>
               <Col md={6} lg={4} className="mb-4">
                 <Form.Group controlId="formGridEmail">
-                  <Form.Label>Hídrica</Form.Label>
+                  <Form.Label>Hídrelétrica</Form.Label>
                   <Form.Control
-                    id="waterEnergyBought"
                     name="waterEnergyBought"
                     size="sm"
-                    value={context.waterEnergyBought}
+                    value={context.hidrelectricBought}
                     onChange={(e) =>
-                      context.setWaterEnergyBought(e.currentTarget.value)
+                      context.setHidrelectricBought(e.currentTarget.value)
                     }
                   />
                 </Form.Group>
               </Col>
               <Col md={6} lg={4} className="mb-4">
                 <Form.Group controlId="formGridEmail">
-                  <Form.Label>Fotovoltáica</Form.Label>
+                  <Form.Label>Solar</Form.Label>
                   <Form.Control
                     name="photovoltaicEnergyBought"
                     size="sm"
-                    value={context.photovoltaicEnergyBought}
+                    value={context.solarBought}
                     onChange={(e) =>
-                      context.setPhotovoltaicEnergyBought(e.currentTarget.value)
+                      context.setSolarBought(e.currentTarget.value)
                     }
                   />
                 </Form.Group>
               </Col>
               <Col md={6} lg={4} className="mb-4">
                 <Form.Group controlId="formGridEmail">
-                  <Form.Label>Bioenergia</Form.Label>
+                  <Form.Label>Biomassa</Form.Label>
                   <Form.Control
                     name="bioenergyBought"
                     size="sm"
-                    value={context.bioenergyBought}
+                    value={context.biomassBought}
                     onChange={(e) =>
-                      context.setBioenergyBought(e.currentTarget.value)
+                      context.setBiomassBought(e.currentTarget.value)
+                    }
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} lg={4} className="mb-4">
+                <Form.Group controlId="formGridEmail">
+                  <Form.Label>Biogás</Form.Label>
+                  <Form.Control
+                    name="bioenergyBought"
+                    size="sm"
+                    value={context.biogasBought}
+                    onChange={(e) =>
+                      context.setBiogasBought(e.currentTarget.value)
+                    }
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} lg={4} className="mb-4">
+                <Form.Group controlId="formGridEmail">
+                  <Form.Label>
+                    Incineração de resíduos sólidos urbanos (fracção
+                    não-biomassa)
+                  </Form.Label>
+                  <Form.Control
+                    name="bioenergyBought"
+                    size="sm"
+                    value={context.solidWasteIncinerationBought}
+                    onChange={(e) =>
+                      context.setSolidWasteIncinerationBought(
+                        e.currentTarget.value
+                      )
                     }
                   />
                 </Form.Group>
@@ -488,28 +532,52 @@ const Energy = () => {
               <Row className="mx-0">
                 <Col md={6} lg={4} className="mb-4">
                   <Form.Group controlId="formGridEmail">
-                    <Form.Label>Fotovoltáica</Form.Label>
+                    <Form.Label>Hidrelétrica</Form.Label>
                     <Form.Control
-                      name="photovoltaicEnergyProduced"
+                      name="hidrelectricProduced"
                       size="sm"
-                      value={context.photovoltaicEnergyProduced}
+                      value={context.hidrelectricProduced}
                       onChange={(e) =>
-                        context.setPhotovoltaicEnergyProduced(
-                          e.currentTarget.value
-                        )
+                        context.setHidrelectricProduced(e.currentTarget.value)
                       }
                     />
                   </Form.Group>
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
                   <Form.Group controlId="formGridEmail">
-                    <Form.Label>Bioenergia</Form.Label>
+                    <Form.Label>Solar</Form.Label>
                     <Form.Control
                       name="bioenergyBought"
                       size="sm"
-                      value={context.bioenergyBought}
+                      value={context.solarProduced}
                       onChange={(e) =>
-                        context.setBioenergyBought(e.currentTarget.value)
+                        context.setSolarProduced(e.currentTarget.value)
+                      }
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6} lg={4} className="mb-4">
+                  <Form.Group controlId="formGridEmail">
+                    <Form.Label>Biomassa</Form.Label>
+                    <Form.Control
+                      name="bioenergyBought"
+                      size="sm"
+                      value={context.biomassProduced}
+                      onChange={(e) =>
+                        context.setBiomassProduced(e.currentTarget.value)
+                      }
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6} lg={4} className="mb-4">
+                  <Form.Group controlId="formGridEmail">
+                    <Form.Label>Biogás</Form.Label>
+                    <Form.Control
+                      name="bioenergyBought"
+                      size="sm"
+                      value={context.biogasProduced}
+                      onChange={(e) =>
+                        context.setBiogasProduced(e.currentTarget.value)
                       }
                     />
                   </Form.Group>
@@ -595,55 +663,6 @@ const Energy = () => {
                 </Col>
               </Row>
             </Row>
-
-            <Row>
-              <Row className="mx-0 mb-2">
-                <Col>
-                  <span
-                    style={{
-                      fontSize: "0.9rem",
-                      fontWeight: "700",
-                      textTransform: "uppercase",
-                      color: "rgba(13,27,62,0.7)",
-                    }}
-                  >
-                    De origem renovável
-                  </span>
-                </Col>
-              </Row>
-
-              <Row className="mx-0">
-                <Col md={6} lg={4} className="mb-4">
-                  <Form.Group controlId="formGridEmail">
-                    <Form.Label>Fotovoltáica</Form.Label>
-                    <Form.Control
-                      name="photovoltaicEnergyProduced"
-                      size="sm"
-                      value={context.photovoltaicEnergyProduced}
-                      onChange={(e) =>
-                        context.setPhotovoltaicEnergyProduced(
-                          e.currentTarget.value
-                        )
-                      }
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={6} lg={4} className="mb-4">
-                  <Form.Group controlId="formGridEmail">
-                    <Form.Label>Bioenergia</Form.Label>
-                    <Form.Control
-                      id="bioenergyProduced"
-                      name="bioenergyProduced"
-                      size="sm"
-                      value={context.bioenergyProduced}
-                      onChange={(e) =>
-                        context.setBioenergyProduced(e.currentTarget.value)
-                      }
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-            </Row>
           </Fragment>
         )}
       </Tab>
@@ -671,79 +690,48 @@ const Energy = () => {
             <Form.Group>
               <Row>
                 <Col md={6} lg={4} className="mb-4">
-                  <Form.Label>Gasóleo simples</Form.Label>
+                  <Form.Label>Gasóleo puro</Form.Label>
                   <Form.Control
                     name="simpleDiesel"
                     size="sm"
-                    value={context.simpleDiesel}
+                    value={context.pureDieselUsedInCompany}
                     onChange={(e) =>
-                      context.setSimpleDiesel(e.currentTarget.value)
+                      context.setPureDieselUsedInCompany(e.currentTarget.value)
                     }
                   />
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
-                  <Form.Label>Gasóleo aditivado</Form.Label>
+                  <Form.Label>Gasolina pura</Form.Label>
                   <Form.Control
                     name="additiveDiesel"
                     size="sm"
-                    value={context.additiveDiesel}
+                    value={context.pureGasolineUsedInCompany}
                     onChange={(e) =>
-                      context.setAdditiveDiesel(e.currentTarget.value)
-                    }
-                  />
-                </Col>
-                <Col md={6} lg={4} className="mb-4">
-                  <Form.Label>Gasolina simples</Form.Label>
-                  <Form.Control
-                    name="plainGasoline"
-                    size="sm"
-                    value={context.plainGasoline}
-                    onChange={(e) =>
-                      context.setPlainGasoline(e.currentTarget.value)
-                    }
-                  />
-                </Col>
-                <Col md={6} lg={4} className="mb-4">
-                  <Form.Label>Gasolina aditivada</Form.Label>
-                  <Form.Control
-                    name="additiveGasoline"
-                    size="sm"
-                    value={context.additiveGasoline}
-                    onChange={(e) =>
-                      context.setAdditiveGasoline(e.currentTarget.value)
+                      context.setPureGasolineUsedInCompany(
+                        e.currentTarget.value
+                      )
                     }
                   />
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
                   <Form.Label>Biocombustível</Form.Label>
                   <Form.Control
-                    name="biofuel"
+                    name="plainGasoline"
                     size="sm"
-                    value={context.biofuel}
-                    onChange={(e) => context.setBiofuel(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col md={6} lg={4} className="mb-4">
-                  <Form.Label>Óleo de aquecimento</Form.Label>
-                  <Form.Control
-                    name="heatingOil"
-                    size="sm"
-                    value={context.heatingOil}
+                    value={context.biofuelUsedInCompany}
                     onChange={(e) =>
-                      context.setHeatingOil(e.currentTarget.value)
+                      context.setBiofuelUsedInCompany(e.currentTarget.value)
                     }
                   />
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
                   <Form.Label>Óleo lubrificante</Form.Label>
                   <Form.Control
-                    name="consumedElectricityProduced"
+                    name="additiveGasoline"
                     size="sm"
-                    value={context.consumedElectricityProduced}
+                    value={context.lubricantUsedInCompany}
                     onChange={(e) =>
-                      context.setConsumedElectricityProduced(
-                        e.currentTarget.value
-                      )
+                      context.setLubricantUsedInCompany(e.currentTarget.value)
                     }
                   />
                 </Col>
@@ -776,8 +764,10 @@ const Energy = () => {
                   <Form.Control
                     name="butane"
                     size="sm"
-                    value={context.butane}
-                    onChange={(e) => context.setButane(e.currentTarget.value)}
+                    value={context.butaneUsedInCompany}
+                    onChange={(e) =>
+                      context.setButaneUsedInCompany(e.currentTarget.value)
+                    }
                   />
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
@@ -785,17 +775,21 @@ const Energy = () => {
                   <Form.Control
                     name="propane"
                     size="sm"
-                    value={context.propane}
-                    onChange={(e) => context.setPropane(e.currentTarget.value)}
+                    value={context.propaneUsedInCompany}
+                    onChange={(e) =>
+                      context.setPropaneUsedInCompany(e.currentTarget.value)
+                    }
                   />
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
-                  <Form.Label>Gás loquefeito de petróleo (GLP)</Form.Label>
+                  <Form.Label>GPL Auto</Form.Label>
                   <Form.Control
-                    name="gpl"
+                    name="cng"
                     size="sm"
-                    value={context.gpl}
-                    onChange={(e) => context.setGpl(e.currentTarget.value)}
+                    value={context.gplAutoUsedInCompany}
+                    onChange={(e) =>
+                      context.setGplAutoUsedInCompany(e.currentTarget.value)
+                    }
                   />
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
@@ -803,28 +797,22 @@ const Energy = () => {
                   <Form.Control
                     name="naturalGas"
                     size="sm"
-                    value={context.naturalGas}
+                    value={context.naturalGasUsedInCompany}
                     onChange={(e) =>
-                      context.setNaturalGas(e.currentTarget.value)
+                      context.setNaturalGasUsedInCompany(e.currentTarget.value)
                     }
                   />
                 </Col>
-                <Col md={6} lg={4} className="mb-4">
-                  <Form.Label>Gás natural comprimido (CNG)</Form.Label>
-                  <Form.Control
-                    name="cng"
-                    size="sm"
-                    value={context.cng}
-                    onChange={(e) => context.setCng(e.currentTarget.value)}
-                  />
-                </Col>
+
                 <Col md={6} lg={4} className="mb-4">
                   <Form.Label>Biogas</Form.Label>
                   <Form.Control
                     name="biogas"
                     size="sm"
-                    value={context.biogas}
-                    onChange={(e) => context.setBiogas(e.currentTarget.value)}
+                    value={context.biogasUsedInCompany}
+                    onChange={(e) =>
+                      context.setBiogasUsedInCompany(e.currentTarget.value)
+                    }
                   />
                 </Col>
               </Row>
@@ -856,8 +844,10 @@ const Energy = () => {
                   <Form.Control
                     name="wood"
                     size="sm"
-                    value={context.wood}
-                    onChange={(e) => context.setWood(e.currentTarget.value)}
+                    value={context.woodUsedInCompany}
+                    onChange={(e) =>
+                      context.setWoodUsedInCompany(e.currentTarget.value)
+                    }
                   />
                 </Col>
                 <Col md={6} lg={4} className="mb-4">
@@ -865,8 +855,10 @@ const Energy = () => {
                   <Form.Control
                     name="pellets"
                     size="sm"
-                    value={context.pellets}
-                    onChange={(e) => context.setPellets(e.currentTarget.value)}
+                    value={context.pelletsUsedInCompany}
+                    onChange={(e) =>
+                      context.setPelletsUsedInCompany(e.currentTarget.value)
+                    }
                   />
                 </Col>
               </Row>
@@ -1046,7 +1038,6 @@ const Energy = () => {
                   const validation = schema.validate(obj, {
                     abortEarly: false,
                   });
-                  console.log("VALIDATION: ", validation.error.details);
 
                   setErrorsInMaterialsLogistic(validation.error.details);
 
@@ -1055,15 +1046,6 @@ const Energy = () => {
                   //arr.push(obj);
 
                   //setThirdPartyFuels(arr);
-
-                  console.log(
-                    transportedMaterial,
-                    provider,
-                    distanceByDelivery,
-                    materialTransportedMass,
-                    vehicleIdentification,
-                    vehicleType
-                  );
                 }}
               >
                 Guardar

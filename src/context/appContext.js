@@ -10,14 +10,20 @@ export default class AppProvider extends Component {
     selectedYear: "",
     loggedUser: "",
     isYearLoaded: false,
-    totalGrapesUsed: "",
+    //generalData
+    totalGrapesProduced: "",
+    totalGrapesBought: "",
     totalMustPurchased: "",
     totalMustFermented: "",
-    brix: "",
+    totalMustProducedFromGrapes: "",
     totalWineProduced: "",
-    wineProducedByGrapesPercentage: "",
-    wineProducedByMustPercentage: "",
-    firstGeneralDataInsertion: false,
+    glassBottles35: "",
+    glassBottles75: "",
+    glassBottles100: "",
+    petBottles: "",
+    bagInBox3: "",
+    bagInBox5: "",
+    firstGeneralDataInsertion: true,
     citricAcid: "",
     tartricAcid: "",
     sorbicAcid: "",
@@ -46,34 +52,76 @@ export default class AppProvider extends Component {
     aluminumSheets: "",
     polyethyleneSheets: "",
     crownCaps: "",
+    aluminumCrownCaps: "",
     bidule: "",
+    aluminumScrewCaps: "",
     pvc: "",
     ldpeFilmWraps: "",
     ldpePalletWraps: "",
     boxes: "",
+    glassBottlesPercentage: "",
+    petBottlesPercentage: "",
+    labelsPercentage: "",
+    corksPercentage: "",
+    wineMuzzlesPercentage: "",
+    capsulesPercentage: "",
+    aluminumSheetsPercentage: "",
+    polyethyleneSheetsPercentage: "",
+    crownCapsPercentage: "",
+    aluminumCrownCapsPercentage: "",
+    bidulePercentage: "",
+    aluminumScrewCapsPercentage: "",
+    pvcPercentage: "",
+    ldpeFilmWrapsPercentage: "",
+    ldpePalletWrapsPercentage: "",
+    boxesPercentage: "",
     nitricAcid: "",
     phosphoricAcid: "",
     sodaLiquid: "",
     solidSodiumHydroxide: "",
     sodiumHypochlorite: "",
     sodiumSulfate: "",
+    antifoamProducts: "",
+    grease: "",
+    lubricantOilEquipmentMaintenance: "",
     firstMaterialsInsertion: false,
     topics: [],
     selectedTopic: {},
     firstEnergyInsertion: false,
+
+    //energy - electricity
     consumedElectricityBought: "",
     naturalGasBought: "",
-    pumping: "",
-    fossilCogenerationBought: "",
+    dieselBought: "",
+    fuelOilBought: "",
+    nuclearBought: "",
+    coalBought: "",
     windEnergyBought: "",
-    waterEnergyBought: "",
-    photovoltaicEnergyBought: "",
-    bioenergyBought: "",
+    hidrelectricBought: "",
+    solarBought: "",
+    biomassBought: "",
+    biogasBought: "",
+    solidWasteIncinerationBought: "",
     consumedElectricityProduced: "",
-    photovoltaicEnergyProduced: "",
-    bioenergyProduced: "",
+    hidrelectricProduced: "",
+    solarProduced: "",
+    biomassProduced: "",
+    biogasProduced: "",
     surplusEntered: "",
-    photovoltaicEnergyEntered: "",
+    pureDieselUsedInCompany: "",
+    pureGasolineUsedInCompany: "",
+    biofuelUsedInCompany: "",
+    lubricantUsedInCompany: "",
+    butaneUsedInCompany: "",
+    propaneUsedInCompany: "",
+    gplAutoUsedInCompany: "",
+    naturalGasUsedInCompany: "",
+    biogasUsedInCompany: "",
+    woodUsedInCompany: "",
+    pelletsUsedInCompany: "",
+
+    ////////////
+    ///////////
     simpleDiesel: "",
     additiveDiesel: "",
     plainGasoline: "",
@@ -88,7 +136,7 @@ export default class AppProvider extends Component {
     biogas: "",
     wood: "",
     pellets: "",
-    //
+    ////////////
     deceit: "",
     deceitDestination: "",
     bagasse: "",
@@ -147,6 +195,131 @@ export default class AppProvider extends Component {
     junkYardMachinesOilsDestination: "",
     sludge: "",
     sludgeDestination: "",
+
+    //water
+    totalWaterFromNetwork: "",
+    totalWaterFromWell: "",
+    totalWaterFromCistern: "",
+    totalWaterReused: "",
+    waterConsumedByEquipmentCleaningOnPressing: "",
+    numberOfCleaningPerMonthOnPressing: "",
+    waterConsumedByEquipmentCleaningOnTrasfega: "",
+    numberOfCleaningPerMonthOnTrasfega: "",
+    waterConsumedByEquipmentCleaningOnEstabilization: "",
+    numberOfCleaningPerMonthOnEstabilization: "",
+    waterConsumedByEquipmentCleaningOnFiltration: "",
+    numberOfCleaningPerMonthOnFiltration: "",
+    waterConsumedByEquipmentCleaningOnDifferentFloors: "",
+    numberOfCleaningPerMonthOnDifferentFloors: "",
+    waterConsumedByEquipmentCleaningOnSterilization: "",
+    numberOfCleaningPerMonthOnSterilization: "",
+    waterConsumedByEquipmentCleaningOnFilling: "",
+    numberOfCleaningPerMonthOnFilling: "",
+    waterConsumedByEquipmentCleaningOnLabeling: "",
+    numberOfCleaningPerMonthOnLabeling: "",
+    waterConsumedByEquipmentCleaningOnBottlingDifferentFloors: "",
+    numberOfCleaningPerMonthOnBottlingDifferentFloors: "",
+    firstWaterInsertion: false,
+
+    //tratamento de águas residuais
+    phHighSeasonGeneratedWater: "",
+    phLowSeasonGeneratedWater: "",
+    conductivityHighSeasonGeneratedWater: "",
+    conductivityLowSeasonGeneratedWater: "",
+    turbidityHighSeasonGeneratedWater: "",
+    turbidityLowSeasonGeneratedWater: "",
+    CQOHighSeasonGeneratedWater: "",
+    CQOLowSeasonGeneratedWater: "",
+    CBOHighSeasonGeneratedWater: "",
+    CBOLowSeasonGeneratedWater: "",
+    SSTHighSeasonGeneratedWater: "",
+    SSTLowSeasonGeneratedWater: "",
+    NTKHighSeasonGeneratedWater: "",
+    NTKLowSeasonGeneratedWater: "",
+    fenoisHighSeasonGeneratedWater: "",
+    fenoisLowSeasonGeneratedWater: "",
+    fosforoHighSeasonGeneratedWater: "",
+    fosforoLowSeasonGeneratedWater: "",
+    nitratosHighSeasonGeneratedWater: "",
+    nitratosLowSeasonGeneratedWater: "",
+    sulfatosHighSeasonGeneratedWater: "",
+    sulfatosLowSeasonGeneratedWater: "",
+    ferroHighSeasonGeneratedWater: "",
+    ferroLowSeasonGeneratedWater: "",
+    aluminumHighSeasonGeneratedWater: "",
+    aluminumLowSeasonGeneratedWater: "",
+    cadmioHighSeasonGeneratedWater: "",
+    cadmioLowSeasonGeneratedWater: "",
+    cobreHighSeasonGeneratedWater: "",
+    cobreLowSeasonGeneratedWater: "",
+    cromioHighSeasonGeneratedWater: "",
+    cromioLowSeasonGeneratedWater: "",
+    manganesHighSeasonGeneratedWater: "",
+    manganesLowSeasonGeneratedWater: "",
+
+    // águas residuais tratadas
+    phHighSeasonTreatedWater: "",
+    phLowSeasonTreatedWater: "",
+    conductivityHighSeasonTreatedWater: "",
+    conductivityLowSeasonTreatedWater: "",
+    turbidityHighSeasonTreatedWater: "",
+    turbidityLowSeasonTreatedWater: "",
+    CQOHighSeasonTreatedWater: "",
+    CQOLowSeasonTreatedWater: "",
+    CBOHighSeasonTreatedWater: "",
+    CBOLowSeasonTreatedWater: "",
+    SSTHighSeasonTreatedWater: "",
+    SSTLowSeasonTreatedWater: "",
+    NTKHighSeasonTreatedWater: "",
+    NTKLowSeasonTreatedWater: "",
+    fenoisHighSeasonTreatedWater: "",
+    fenoisLowSeasonTreatedWater: "",
+    fosforoHighSeasonTreatedWater: "",
+    fosforoLowSeasonTreatedWater: "",
+    nitratosHighSeasonTreatedWater: "",
+    nitratosLowSeasonTreatedWater: "",
+    sulfatosHighSeasonTreatedWater: "",
+    sulfatosLowSeasonTreatedWater: "",
+    ferroHighSeasonTreatedWater: "",
+    ferroLowSeasonTreatedWater: "",
+    aluminumHighSeasonTreatedWater: "",
+    aluminumLowSeasonTreatedWater: "",
+    cadmioHighSeasonTreatedWater: "",
+    cadmioLowSeasonTreatedWater: "",
+    cobreHighSeasonTreatedWater: "",
+    cobreLowSeasonTreatedWater: "",
+    cromioHighSeasonTreatedWater: "",
+    cromioLowSeasonTreatedWater: "",
+    manganesHighSeasonTreatedWater: "",
+    manganesLowSeasonTreatedWater: "",
+
+    //images
+    producedAndBoughtGrapesImage: "",
+    producedAndBoughtMustImage: "",
+    mustFromProducedGrapesImage: "",
+    totalWineProportionsByTypeImage: "",
+    waterConsumptionBySourceImage: "",
+    waterConsumptionByWinemakingProcessImage: "",
+    waterConsumptionByBottlingProcessImage: "",
+    waterConsumptionByProcessImage: "",
+    pollutantRemovalPercentageImage: "",
+    electricityBySourceImage: "",
+    electricityProducedBySourceImage: "",
+    electricityConsumedInCompanyInstalationsImage: "",
+
+    //Completed
+    isCompleted1: false,
+    isCompleted2: false,
+    isCompleted3: false,
+    isCompleted4: false,
+    isCompleted5: false,
+    isCompleted6: false,
+    isCompleted7: false,
+    isCompleted8: false,
+    isCompleted9: false,
+    isCompleted10: false,
+    isCompleted11: false,
+    isCompleted12: false,
   };
 
   componentDidMount() {
@@ -169,6 +342,7 @@ export default class AppProvider extends Component {
         { id: "materials", name: "Materiais" },
         { id: "energy", name: "Energia" },
         { id: "waste", name: "Resíduos" },
+        { id: "water", name: "Água" },
       ],
       selectedTopic: { id: "generalData", name: "Dados gerais" },
     });
@@ -227,16 +401,25 @@ export default class AppProvider extends Component {
               isReportGenerationActive: isReportGenerationActive,
             });
           },
-          totalGrapesUsed: this.state.totalGrapesUsed,
+          //generalData
+          totalGrapesProduced: this.state.totalGrapesProduced,
+          totalGrapesBought: this.state.totalGrapesBought,
           totalMustPurchased: this.state.totalMustPurchased,
           totalMustFermented: this.state.totalMustFermented,
           brix: this.state.brix,
+          totalMustProducedFromGrapes: this.state.totalMustProducedFromGrapes,
           totalWineProduced: this.state.totalWineProduced,
-          wineProducedByGrapesPercentage:
-            this.state.wineProducedByGrapesPercentage,
-          wineProducedByMustPercentage: this.state.wineProducedByMustPercentage,
-          setTotalGrapesUsed: (totalGrapesUsed) => {
-            this.setState({ totalGrapesUsed });
+          glassBottles35: this.state.glassBottles35,
+          glassBottles75: this.state.glassBottles75,
+          glassBottles100: this.state.glassBottles100,
+          petBottles: this.state.petBottles,
+          bagInBox3: this.state.bagInBox3,
+          bagInBox5: this.state.bagInBox5,
+          setTotalGrapesProduced: (totalGrapesProduced) => {
+            this.setState({ totalGrapesProduced });
+          },
+          setTotalGrapesBought: (totalGrapesBought) => {
+            this.setState({ totalGrapesBought });
           },
           setTotalMustPurchased: (totalMustPurchased) => {
             this.setState({ totalMustPurchased });
@@ -247,16 +430,29 @@ export default class AppProvider extends Component {
           setBrix: (brix) => {
             this.setState({ brix });
           },
+          setTotalMustProducedFromGrapes: (totalMustProducedFromGrapes) => {
+            this.setState({ totalMustProducedFromGrapes });
+          },
           setTotalWineProduced: (totalWineProduced) => {
             this.setState({ totalWineProduced });
           },
-          setWineProducedByGrapesPercentage: (
-            wineProducedByGrapesPercentage
-          ) => {
-            this.setState({ wineProducedByGrapesPercentage });
+          setGlassBottles35: (glassBottles35) => {
+            this.setState({ glassBottles35 });
           },
-          setWineProducedByMustPercentage: (wineProducedByMustPercentage) => {
-            this.setState({ wineProducedByMustPercentage });
+          setGlassBottles75: (glassBottles75) => {
+            this.setState({ glassBottles75 });
+          },
+          setGlassBottles100: (glassBottles100) => {
+            this.setState({ glassBottles100 });
+          },
+          setPetBottles: (petBottles) => {
+            this.setState({ petBottles });
+          },
+          setBagInBox3: (bagInBox3) => {
+            this.setState({ bagInBox3 });
+          },
+          setBagInBox5: (bagInBox5) => {
+            this.setState({ bagInBox5 });
           },
           firstGeneralDataInsertion: this.state.firstGeneralDataInsertion,
           setFirstGeneralDataInsertion: (firstGeneralDataInsertion) => {
@@ -290,17 +486,39 @@ export default class AppProvider extends Component {
           aluminumSheets: this.state.aluminumSheets,
           polyethyleneSheets: this.state.polyethyleneSheets,
           crownCaps: this.state.crownCaps,
+          aluminumCrownCaps: this.state.aluminumCrownCaps,
           bidule: this.state.bidule,
+          aluminumScrewCaps: this.state.aluminumScrewCaps,
           pvc: this.state.pvc,
           ldpeFilmWraps: this.state.ldpeFilmWraps,
           ldpePalletWraps: this.state.ldpePalletWraps,
           boxes: this.state.boxes,
+          glassBottlesPercentage: this.state.glassBottlesPercentage,
+          petBottlesPercentage: this.state.petBottlesPercentage,
+          labelsPercentage: this.state.labelsPercentage,
+          corksPercentage: this.state.corksPercentage,
+          wineMuzzlesPercentage: this.state.wineMuzzlesPercentage,
+          capsulesPercentage: this.state.capsulesPercentage,
+          aluminumSheetsPercentage: this.state.aluminumSheetsPercentage,
+          polyethyleneSheetsPercentage: this.state.polyethyleneSheetsPercentage,
+          crownCapsPercentage: this.state.crownCapsPercentage,
+          aluminumCrownCapsPercentage: this.state.aluminumCrownCapsPercentage,
+          bidulePercentage: this.state.bidulePercentage,
+          aluminumScrewCapsPercentage: this.state.aluminumScrewCapsPercentage,
+          pvcPercentage: this.state.pvcPercentage,
+          ldpeFilmWrapsPercentage: this.state.ldpeFilmWrapsPercentage,
+          ldpePalletWrapsPercentage: this.state.ldpePalletWrapsPercentage,
+          boxesPercentage: this.state.boxesPercentage,
           nitricAcid: this.state.nitricAcid,
           phosphoricAcid: this.state.phosphoricAcid,
           sodaLiquid: this.state.sodaLiquid,
           solidSodiumHydroxide: this.state.solidSodiumHydroxide,
           sodiumHypochlorite: this.state.microorganisms,
           sodiumSulfate: this.state.sodiumSulfate,
+          antifoamProducts: this.state.antifoamProducts,
+          grease: this.state.grease,
+          lubricantOilEquipmentMaintenance:
+            this.state.lubricantOilEquipmentMaintenance,
           setCitricAcid: (citricAcid) => {
             this.setState({ citricAcid });
           },
@@ -385,8 +603,14 @@ export default class AppProvider extends Component {
           setCrownCaps: (crownCaps) => {
             this.setState({ crownCaps });
           },
+          setAluminumCrownCaps: (aluminumCrownCaps) => {
+            this.setState({ aluminumCrownCaps });
+          },
           setBidule: (bidule) => {
             this.setState({ bidule });
+          },
+          setAluminumScrewCaps: (aluminumScrewCaps) => {
+            this.setState({ aluminumScrewCaps });
           },
           setPvc: (pvc) => {
             this.setState({ pvc });
@@ -399,6 +623,54 @@ export default class AppProvider extends Component {
           },
           setBoxes: (boxes) => {
             this.setState({ boxes });
+          },
+          setGlassBottlesPercentage: (glassBottlesPercentage) => {
+            this.setState({ glassBottlesPercentage });
+          },
+          setPetBottlesPercentage: (petBottlesPercentage) => {
+            this.setState({ petBottlesPercentage });
+          },
+          setLabelsPercentage: (labelsPercentage) => {
+            this.setState({ labelsPercentage });
+          },
+          setCorksPercentage: (corksPercentage) => {
+            this.setState({ corksPercentage });
+          },
+          setWineMuzzlesPercentage: (wineMuzzlesPercentage) => {
+            this.setState({ wineMuzzlesPercentage });
+          },
+          setCapsulesPercentage: (capsulesPercentage) => {
+            this.setState({ capsulesPercentage });
+          },
+          setAluminumSheetsPercentage: (aluminumSheetsPercentage) => {
+            this.setState({ aluminumSheetsPercentage });
+          },
+          setPolyethyleneSheetsPercentage: (polyethyleneSheetsPercentage) => {
+            this.setState({ polyethyleneSheetsPercentage });
+          },
+          setCrownCapsPercentage: (crownCapsPercentage) => {
+            this.setState({ crownCapsPercentage });
+          },
+          setAluminumCrownCapsPercentage: (aluminumCrownCapsPercentage) => {
+            this.setState({ aluminumCrownCapsPercentage });
+          },
+          setBidulePercentage: (bidulePercentage) => {
+            this.setState({ bidulePercentage });
+          },
+          setAluminumScrewCapsPercentage: (aluminumScrewCapsPercentage) => {
+            this.setState({ aluminumScrewCapsPercentage });
+          },
+          setPvcPercentage: (pvcPercentage) => {
+            this.setState({ pvcPercentage });
+          },
+          setLdpeFilmWrapsPercentage: (ldpeFilmWrapsPercentage) => {
+            this.setState({ ldpeFilmWrapsPercentage });
+          },
+          setLdpePalletWrapsPercentage: (ldpePalletWrapsPercentage) => {
+            this.setState({ ldpePalletWrapsPercentage });
+          },
+          setBoxesPercentage: (boxesPercentage) => {
+            this.setState({ boxesPercentage });
           },
           setNitricAcid: (nitricAcid) => {
             this.setState({ nitricAcid });
@@ -418,6 +690,17 @@ export default class AppProvider extends Component {
           setSodiumSulfate: (sodiumSulfate) => {
             this.setState({ sodiumSulfate });
           },
+          setAntifoamProducts: (antifoamProducts) => {
+            this.setState({ antifoamProducts });
+          },
+          setGrease: (grease) => {
+            this.setState({ grease });
+          },
+          setLubricantOilEquipmentMaintenance: (
+            lubricantOilEquipmentMaintenance
+          ) => {
+            this.setState({ lubricantOilEquipmentMaintenance });
+          },
           firstMaterialsInsertion: this.state.firstMaterialsInsertion,
           setFirstMaterialsInsertion: (firstMaterialsInsertion) => {
             this.setState({ firstMaterialsInsertion });
@@ -430,57 +713,123 @@ export default class AppProvider extends Component {
           setSelectedTopic: (topic) => {
             this.setState({ selectedTopic: topic });
           },
+
+          /* Energy - electricity */
           consumedElectricityBought: this.state.consumedElectricityBought,
+          naturalGasBought: this.state.naturalGasBought,
+          dieselBought: this.state.dieselBought,
+          fuelOilBought: this.state.fuelOilBought,
+          nuclearBought: this.state.nuclearBought,
+          coalBought: this.state.coalBought,
+          windEnergyBought: this.state.windEnergyBought,
+          hidrelectricBought: this.state.hidrelectricBought,
+          solarBought: this.state.solarBought,
+          biomassBought: this.state.biomassBought,
+          biogasBought: this.state.biogasBought,
+          solidWasteIncinerationBought: this.state.solidWasteIncinerationBought,
+          consumedElectricityProduced: this.state.consumedElectricityProduced,
+          hidrelectricProduced: this.state.hidrelectricProduced,
+          solarProduced: this.state.solarProduced,
+          biomassProduced: this.state.biomassProduced,
+          biogasProduced: this.state.biogasProduced,
+          surplusEntered: this.state.surplusEntered,
+          pureDieselUsedInCompany: this.state.pureDieselUsedInCompany,
+          pureGasolineUsedInCompany: this.state.pureGasolineUsedInCompany,
+          biofuelUsedInCompany: this.state.biofuelUsedInCompany,
+          lubricantUsedInCompany: this.state.lubricantUsedInCompany,
+          butaneUsedInCompany: this.state.butaneUsedInCompany,
+          propaneUsedInCompany: this.state.propaneUsedInCompany,
+          gplAutoUsedInCompany: this.state.gplAutoUsedInCompany,
+          naturalGasUsedInCompany: this.state.naturalGasUsedInCompany,
+          biogasUsedInCompany: this.state.biogasUsedInCompany,
+          woodUsedInCompany: this.state.woodUsedInCompany,
+          pelletsUsedInCompany: this.state.pelletsUsedInCompany,
           setConsumedElectricityBought: (consumedElectricityBought) => {
             this.setState({ consumedElectricityBought });
           },
-          naturalGasBought: this.state.naturalGasBought,
           setNaturalGasBought: (naturalGasBought) => {
             this.setState({ naturalGasBought });
           },
-          pumping: this.state.pumping,
-          setPumping: (pumping) => {
-            this.setState({ pumping });
+          setDieselBought: (dieselBought) => {
+            this.setState({ dieselBought });
           },
-          fossilCogenerationBought: this.state.fossilCogenerationBought,
-          setFossilCogenerationBought: (fossilCogenerationBought) => {
-            this.setState({ fossilCogenerationBought });
+          setFuelOilBought: (fuelOilBought) => {
+            this.setState({ fuelOilBought });
           },
-          windEnergyBought: this.state.windEnergyBought,
+          setNuclearBought: (nuclearBought) => {
+            this.setState({ nuclearBought });
+          },
+          setCoalBought: (coalBought) => {
+            this.setState({ coalBought });
+          },
           setWindEnergyBought: (windEnergyBought) => {
             this.setState({ windEnergyBought });
           },
-          waterEnergyBought: this.state.waterEnergyBought,
-          setWaterEnergyBought: (waterEnergyBought) => {
-            this.setState({ waterEnergyBought });
+          setHidrelectricBought: (hidrelectricBought) => {
+            this.setState({ hidrelectricBought });
           },
-          photovoltaicEnergyBought: this.state.photovoltaicEnergyBought,
-          setPhotovoltaicEnergyBought: (photovoltaicEnergyBought) => {
-            this.setState({ photovoltaicEnergyBought });
+          setSolarBought: (solarBought) => {
+            this.setState({ solarBought });
           },
-          bioenergyBought: this.state.bioenergyBought,
-          setBioenergyBought: (bioenergyBought) => {
-            this.setState({ bioenergyBought });
+          setBiomassBought: (biomassBought) => {
+            this.setState({ biomassBought });
           },
-          consumedElectricityProduced: this.state.consumedElectricityProduced,
+          setBiogasBought: (biogasBought) => {
+            this.setState({ biogasBought });
+          },
+          setSolidWasteIncinerationBought: (solidWasteIncinerationBought) => {
+            this.setState({ solidWasteIncinerationBought });
+          },
           setConsumedElectricityProduced: (consumedElectricityProduced) => {
             this.setState({ consumedElectricityProduced });
           },
-          photovoltaicEnergyProduced: this.state.photovoltaicEnergyProduced,
-          setPhotovoltaicEnergyProduced: (photovoltaicEnergyProduced) => {
-            this.setState({ photovoltaicEnergyProduced });
+          setHidrelectricProduced: (hidrelectricProduced) => {
+            this.setState({ hidrelectricProduced });
           },
-          bioenergyProduced: this.state.bioenergyProduced,
-          setBioenergyProduced: (bioenergyProduced) => {
-            this.setState({ bioenergyProduced });
+          setSolarProduced: (solarProduced) => {
+            this.setState({ solarProduced });
           },
-          surplusEntered: this.state.surplusEntered,
+          setBiomassProduced: (biomassProduced) => {
+            this.setState({ biomassProduced });
+          },
+          setBiogasProduced: (biogasProduced) => {
+            this.setState({ biogasProduced });
+          },
           setSurplusEntered: (surplusEntered) => {
             this.setState({ surplusEntered });
           },
-          photovoltaicEnergyEntered: this.state.photovoltaicEnergyEntered,
-          setPhotovoltaicEnergyEntered: (photovoltaicEnergyEntered) => {
-            this.setState({ photovoltaicEnergyEntered });
+          setPureDieselUsedInCompany: (pureDieselUsedInCompany) => {
+            this.setState({ pureDieselUsedInCompany });
+          },
+          setPureGasolineUsedInCompany: (pureGasolineUsedInCompany) => {
+            this.setState({ pureGasolineUsedInCompany });
+          },
+          setBiofuelUsedInCompany: (biofuelUsedInCompany) => {
+            this.setState({ biofuelUsedInCompany });
+          },
+          setLubricantUsedInCompany: (lubricantUsedInCompany) => {
+            this.setState({ lubricantUsedInCompany });
+          },
+          setButaneUsedInCompany: (butaneUsedInCompany) => {
+            this.setState({ butaneUsedInCompany });
+          },
+          setPropaneUsedInCompany: (propaneUsedInCompany) => {
+            this.setState({ propaneUsedInCompany });
+          },
+          setGplAutoUsedInCompany: (gplAutoUsedInCompany) => {
+            this.setState({ gplAutoUsedInCompany });
+          },
+          setNaturalGasUsedInCompany: (naturalGasUsedInCompany) => {
+            this.setState({ naturalGasUsedInCompany });
+          },
+          setBiogasUsedInCompany: (biogasUsedInCompany) => {
+            this.setState({ biogasUsedInCompany });
+          },
+          setWoodUsedInCompany: (woodUsedInCompany) => {
+            this.setState({ woodUsedInCompany });
+          },
+          setPelletsUsedInCompany: (pelletsUsedInCompany) => {
+            this.setState({ pelletsUsedInCompany });
           },
           simpleDiesel: this.state.simpleDiesel,
           setSimpleDiesel: (simpleDiesel) => {
@@ -708,6 +1057,645 @@ export default class AppProvider extends Component {
             plasticMetalMunicipalitiesWaste
           ) => {
             this.setState({ plasticMetalMunicipalitiesWaste });
+          },
+          //water
+          totalWaterFromNetwork: this.state.totalWaterFromNetwork,
+          totalWaterFromWell: this.state.totalWaterFromWell,
+          totalWaterFromCistern: this.state.totalWaterFromCistern,
+          totalWaterReused: this.state.totalWaterReused,
+          waterConsumedByEquipmentCleaningOnPressing:
+            this.state.waterConsumedByEquipmentCleaningOnPressing,
+          numberOfCleaningPerMonthOnPressing:
+            this.state.numberOfCleaningPerMonthOnPressing,
+          waterConsumedByEquipmentCleaningOnTrasfega:
+            this.state.waterConsumedByEquipmentCleaningOnTrasfega,
+          numberOfCleaningPerMonthOnTrasfega:
+            this.state.numberOfCleaningPerMonthOnTrasfega,
+          waterConsumedByEquipmentCleaningOnEstabilization:
+            this.state.waterConsumedByEquipmentCleaningOnEstabilization,
+          numberOfCleaningPerMonthOnEstabilization:
+            this.state.numberOfCleaningPerMonthOnEstabilization,
+          waterConsumedByEquipmentCleaningOnFiltration:
+            this.state.waterConsumedByEquipmentCleaningOnFiltration,
+          numberOfCleaningPerMonthOnFiltration:
+            this.state.numberOfCleaningPerMonthOnFiltration,
+          waterConsumedByEquipmentCleaningOnDifferentFloors:
+            this.state.waterConsumedByEquipmentCleaningOnDifferentFloors,
+          numberOfCleaningPerMonthOnDifferentFloors:
+            this.state.numberOfCleaningPerMonthOnDifferentFloors,
+          waterConsumedByEquipmentCleaningOnSterilization:
+            this.state.waterConsumedByEquipmentCleaningOnSterilization,
+          numberOfCleaningPerMonthOnSterilization:
+            this.state.numberOfCleaningPerMonthOnSterilization,
+          waterConsumedByEquipmentCleaningOnFilling:
+            this.state.waterConsumedByEquipmentCleaningOnFilling,
+          numberOfCleaningPerMonthOnFilling:
+            this.state.numberOfCleaningPerMonthOnFilling,
+          waterConsumedByEquipmentCleaningOnLabeling:
+            this.state.waterConsumedByEquipmentCleaningOnLabeling,
+          numberOfCleaningPerMonthOnLabeling:
+            this.state.numberOfCleaningPerMonthOnLabeling,
+          waterConsumedByEquipmentCleaningOnBottlingDifferentFloors:
+            this.state
+              .waterConsumedByEquipmentCleaningOnBottlingDifferentFloors,
+          numberOfCleaningPerMonthOnBottlingDifferentFloors:
+            this.state.numberOfCleaningPerMonthOnBottlingDifferentFloors,
+          firstWaterInsertion: this.state.firstWaterInsertion,
+          setTotalWaterFromNetwork: (totalWaterFromNetwork) => {
+            this.setState({ totalWaterFromNetwork });
+          },
+          setTotalWaterFromWell: (totalWaterFromWell) => {
+            this.setState({ totalWaterFromWell });
+          },
+          setTotalWaterFromCistern: (totalWaterFromCistern) => {
+            this.setState({ totalWaterFromCistern });
+          },
+          setTotalWaterReused: (totalWaterReused) => {
+            this.setState({ totalWaterReused });
+          },
+          setWaterConsumedByEquipmentCleaningOnPressing: (
+            waterConsumedByEquipmentCleaningOnPressing
+          ) => {
+            this.setState({ waterConsumedByEquipmentCleaningOnPressing });
+          },
+          setNumberOfCleaningPerMonthOnPressing: (
+            numberOfCleaningPerMonthOnPressing
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnPressing });
+          },
+          setWaterConsumedByEquipmentCleaningOnTrasfega: (
+            waterConsumedByEquipmentCleaningOnTrasfega
+          ) => {
+            this.setState({ waterConsumedByEquipmentCleaningOnTrasfega });
+          },
+          setNumberOfCleaningPerMonthOnTrasfega: (
+            numberOfCleaningPerMonthOnTrasfega
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnTrasfega });
+          },
+          setWaterConsumedByEquipmentCleaningOnEstabilization: (
+            waterConsumedByEquipmentCleaningOnEstabilization
+          ) => {
+            this.setState({ waterConsumedByEquipmentCleaningOnEstabilization });
+          },
+          setNumberOfCleaningPerMonthOnEstabilization: (
+            numberOfCleaningPerMonthOnEstabilization
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnEstabilization });
+          },
+          setWaterConsumedByEquipmentCleaningOnFiltration: (
+            waterConsumedByEquipmentCleaningOnFiltration
+          ) => {
+            this.setState({ waterConsumedByEquipmentCleaningOnFiltration });
+          },
+          setNumberOfCleaningPerMonthOnFiltration: (
+            numberOfCleaningPerMonthOnFiltration
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnFiltration });
+          },
+          setWaterConsumedByEquipmentCleaningOnDifferentFloors: (
+            waterConsumedByEquipmentCleaningOnDifferentFloors
+          ) => {
+            this.setState({
+              waterConsumedByEquipmentCleaningOnDifferentFloors,
+            });
+          },
+          setNumberOfCleaningPerMonthOnDifferentFloors: (
+            numberOfCleaningPerMonthOnDifferentFloors
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnDifferentFloors });
+          },
+          setWaterConsumedByEquipmentCleaningOnSterilization: (
+            waterConsumedByEquipmentCleaningOnSterilization
+          ) => {
+            this.setState({ waterConsumedByEquipmentCleaningOnSterilization });
+          },
+          setNumberOfCleaningPerMonthOnSterilization: (
+            numberOfCleaningPerMonthOnSterilization
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnSterilization });
+          },
+          setWaterConsumedByEquipmentCleaningOnFilling: (
+            waterConsumedByEquipmentCleaningOnFilling
+          ) => {
+            this.setState({ waterConsumedByEquipmentCleaningOnFilling });
+          },
+          setNumberOfCleaningPerMonthOnFilling: (
+            numberOfCleaningPerMonthOnFilling
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnFilling });
+          },
+          setWaterConsumedByEquipmentCleaningOnLabeling: (
+            waterConsumedByEquipmentCleaningOnLabeling
+          ) => {
+            this.setState({ waterConsumedByEquipmentCleaningOnLabeling });
+          },
+          setNumberOfCleaningPerMonthOnLabeling: (
+            numberOfCleaningPerMonthOnLabeling
+          ) => {
+            this.setState({ numberOfCleaningPerMonthOnLabeling });
+          },
+          setWaterConsumedByEquipmentCleaningOnBottlingDifferentFloors: (
+            waterConsumedByEquipmentCleaningOnBottlingDifferentFloors
+          ) => {
+            this.setState({
+              waterConsumedByEquipmentCleaningOnBottlingDifferentFloors,
+            });
+          },
+          setNumberOfCleaningPerMonthOnBottlingDifferentFloors: (
+            numberOfCleaningPerMonthOnBottlingDifferentFloors
+          ) => {
+            this.setState({
+              numberOfCleaningPerMonthOnBottlingDifferentFloors,
+            });
+          },
+          setFirstWaterInsertion: (firstWaterInsertion) => {
+            this.setState({ firstWaterInsertion });
+          },
+
+          // tratamento de águas residuais
+          phHighSeasonGeneratedWater: this.state.phHighSeasonGeneratedWater,
+          phLowSeasonGeneratedWater: this.state.phLowSeasonGeneratedWater,
+          conductivityHighSeasonGeneratedWater:
+            this.state.conductivityHighSeasonGeneratedWater,
+          conductivityLowSeasonGeneratedWater:
+            this.state.conductivityLowSeasonGeneratedWater,
+          turbidityHighSeasonGeneratedWater:
+            this.state.turbidityHighSeasonGeneratedWater,
+          turbidityLowSeasonGeneratedWater:
+            this.state.turbidityLowSeasonGeneratedWater,
+          CQOHighSeasonGeneratedWater: this.state.CQOHighSeasonGeneratedWater,
+          CQOLowSeasonGeneratedWater: this.state.CQOLowSeasonGeneratedWater,
+          CBOHighSeasonGeneratedWater: this.state.CBOHighSeasonGeneratedWater,
+          CBOLowSeasonGeneratedWater: this.state.CBOLowSeasonGeneratedWater,
+          SSTHighSeasonGeneratedWater: this.state.SSTHighSeasonGeneratedWater,
+          SSTLowSeasonGeneratedWater: this.state.SSTLowSeasonGeneratedWater,
+          NTKHighSeasonGeneratedWater: this.state.NTKHighSeasonGeneratedWater,
+          NTKLowSeasonGeneratedWater: this.state.NTKLowSeasonGeneratedWater,
+          fenoisHighSeasonGeneratedWater:
+            this.state.fenoisHighSeasonGeneratedWater,
+          fenoisLowSeasonGeneratedWater:
+            this.state.fenoisLowSeasonGeneratedWater,
+          fosforoHighSeasonGeneratedWater:
+            this.state.fosforoHighSeasonGeneratedWater,
+          fosforoLowSeasonGeneratedWater:
+            this.state.fosforoLowSeasonGeneratedWater,
+          nitratosHighSeasonGeneratedWater:
+            this.state.nitratosHighSeasonGeneratedWater,
+          nitratosLowSeasonGeneratedWater:
+            this.state.nitratosLowSeasonGeneratedWater,
+          sulfatosHighSeasonGeneratedWater:
+            this.state.sulfatosHighSeasonGeneratedWater,
+          sulfatosLowSeasonGeneratedWater:
+            this.state.sulfatosLowSeasonGeneratedWater,
+          ferroHighSeasonGeneratedWater:
+            this.state.ferroHighSeasonGeneratedWater,
+          ferroLowSeasonGeneratedWater: this.state.ferroLowSeasonGeneratedWater,
+          aluminumHighSeasonGeneratedWater:
+            this.state.aluminumHighSeasonGeneratedWater,
+          aluminumLowSeasonGeneratedWater:
+            this.state.aluminumLowSeasonGeneratedWater,
+          cadmioHighSeasonGeneratedWater:
+            this.state.cadmioHighSeasonGeneratedWater,
+          cadmioLowSeasonGeneratedWater:
+            this.state.cadmioLowSeasonGeneratedWater,
+          cobreHighSeasonGeneratedWater:
+            this.state.cobreHighSeasonGeneratedWater,
+          cobreLowSeasonGeneratedWater: this.state.cobreLowSeasonGeneratedWater,
+          cromioHighSeasonGeneratedWater:
+            this.state.cromioHighSeasonGeneratedWater,
+          cromioLowSeasonGeneratedWater:
+            this.state.cromioLowSeasonGeneratedWater,
+          manganesHighSeasonGeneratedWater:
+            this.state.manganesHighSeasonGeneratedWater,
+          manganesLowSeasonGeneratedWater:
+            this.state.manganesLowSeasonGeneratedWater,
+
+          // águas residuais tratadas
+          phHighSeasonTreatedWater: this.state.phHighSeasonTreatedWater,
+          phLowSeasonTreatedWater: this.state.phLowSeasonTreatedWater,
+          conductivityHighSeasonTreatedWater:
+            this.state.conductivityHighSeasonTreatedWater,
+          conductivityLowSeasonTreatedWater:
+            this.state.conductivityLowSeasonTreatedWater,
+          turbidityHighSeasonTreatedWater:
+            this.state.turbidityHighSeasonTreatedWater,
+          turbidityLowSeasonTreatedWater:
+            this.state.turbidityLowSeasonTreatedWater,
+          CQOHighSeasonTreatedWater: this.state.CQOHighSeasonTreatedWater,
+          CQOLowSeasonTreatedWater: this.state.CQOLowSeasonTreatedWater,
+          CBOHighSeasonTreatedWater: this.state.CBOHighSeasonTreatedWater,
+          CBOLowSeasonTreatedWater: this.state.CBOLowSeasonTreatedWater,
+          SSTHighSeasonTreatedWater: this.state.SSTHighSeasonTreatedWater,
+          SSTLowSeasonTreatedWater: this.state.SSTLowSeasonTreatedWater,
+          NTKHighSeasonTreatedWater: this.state.NTKHighSeasonTreatedWater,
+          NTKLowSeasonTreatedWater: this.state.NTKLowSeasonTreatedWater,
+          fenoisHighSeasonTreatedWater: this.state.fenoisHighSeasonTreatedWater,
+          fenoisLowSeasonTreatedWater: this.state.fenoisLowSeasonTreatedWater,
+          fosforoHighSeasonTreatedWater:
+            this.state.fosforoHighSeasonTreatedWater,
+          fosforoLowSeasonTreatedWater: this.state.fosforoLowSeasonTreatedWater,
+          nitratosHighSeasonTreatedWater:
+            this.state.nitratosHighSeasonTreatedWater,
+          nitratosLowSeasonTreatedWater:
+            this.state.nitratosLowSeasonTreatedWater,
+          sulfatosHighSeasonTreatedWater:
+            this.state.sulfatosHighSeasonTreatedWater,
+          sulfatosLowSeasonTreatedWater:
+            this.state.sulfatosLowSeasonTreatedWater,
+          ferroHighSeasonTreatedWater: this.state.ferroHighSeasonTreatedWater,
+          ferroLowSeasonTreatedWater: this.state.ferroLowSeasonTreatedWater,
+          aluminumHighSeasonTreatedWater:
+            this.state.aluminumHighSeasonTreatedWater,
+          aluminumLowSeasonTreatedWater:
+            this.state.aluminumLowSeasonTreatedWater,
+          cadmioHighSeasonTreatedWater: this.state.cadmioHighSeasonTreatedWater,
+          cadmioLowSeasonTreatedWater: this.state.cadmioLowSeasonTreatedWater,
+          cobreHighSeasonTreatedWater: this.state.cobreHighSeasonTreatedWater,
+          cobreLowSeasonTreatedWater: this.state.cobreLowSeasonTreatedWater,
+          cromioHighSeasonTreatedWater: this.state.cromioHighSeasonTreatedWater,
+          cromioLowSeasonTreatedWater: this.state.cromioLowSeasonTreatedWater,
+          manganesHighSeasonTreatedWater:
+            this.state.manganesHighSeasonTreatedWater,
+          manganesLowSeasonTreatedWater:
+            this.state.manganesLowSeasonTreatedWater,
+
+          // águas residuais geradas
+          setPhHighSeasonGeneratedWater: (phHighSeasonGeneratedWater) => {
+            this.setState({ phHighSeasonGeneratedWater });
+          },
+          setPhLowSeasonGeneratedWater: (phLowSeasonGeneratedWater) => {
+            this.setState({ phLowSeasonGeneratedWater });
+          },
+          setConductivityHighSeasonGeneratedWater: (
+            conductivityHighSeasonGeneratedWater
+          ) => {
+            this.setState({ conductivityHighSeasonGeneratedWater });
+          },
+          setConductivityLowSeasonGeneratedWater: (
+            conductivityLowSeasonGeneratedWater
+          ) => {
+            this.setState({ conductivityLowSeasonGeneratedWater });
+          },
+          setTurbidityHighSeasonGeneratedWater: (
+            turbidityHighSeasonGeneratedWater
+          ) => {
+            this.setState({ turbidityHighSeasonGeneratedWater });
+          },
+          setTurbidityLowSeasonGeneratedWater: (
+            turbidityLowSeasonGeneratedWater
+          ) => {
+            this.setState({ turbidityLowSeasonGeneratedWater });
+          },
+          setCQOHighSeasonGeneratedWater: (CQOHighSeasonGeneratedWater) => {
+            this.setState({ CQOHighSeasonGeneratedWater });
+          },
+          setCQOLowSeasonGeneratedWater: (CQOLowSeasonGeneratedWater) => {
+            this.setState({ CQOLowSeasonGeneratedWater });
+          },
+          setCBOHighSeasonGeneratedWater: (CBOHighSeasonGeneratedWater) => {
+            this.setState({ CBOHighSeasonGeneratedWater });
+          },
+          setCBOLowSeasonGeneratedWater: (CBOLowSeasonGeneratedWater) => {
+            this.setState({ CBOLowSeasonGeneratedWater });
+          },
+          setSSTHighSeasonGeneratedWater: (SSTHighSeasonGeneratedWater) => {
+            this.setState({ SSTHighSeasonGeneratedWater });
+          },
+          setSSTLowSeasonGeneratedWater: (SSTLowSeasonGeneratedWater) => {
+            this.setState({ SSTLowSeasonGeneratedWater });
+          },
+          setNTKHighSeasonGeneratedWater: (NTKHighSeasonGeneratedWater) => {
+            this.setState({ NTKHighSeasonGeneratedWater });
+          },
+          setNTKLowSeasonGeneratedWater: (NTKLowSeasonGeneratedWater) => {
+            this.setState({ NTKLowSeasonGeneratedWater });
+          },
+          setFenoisHighSeasonGeneratedWater: (
+            fenoisHighSeasonGeneratedWater
+          ) => {
+            this.setState({ fenoisHighSeasonGeneratedWater });
+          },
+          setFenoisLowSeasonGeneratedWater: (fenoisLowSeasonGeneratedWater) => {
+            this.setState({ fenoisLowSeasonGeneratedWater });
+          },
+          setFosforoHighSeasonGeneratedWater: (
+            fosforoHighSeasonGeneratedWater
+          ) => {
+            this.setState({ fosforoHighSeasonGeneratedWater });
+          },
+          setFosforoLowSeasonGeneratedWater: (
+            fosforoLowSeasonGeneratedWater
+          ) => {
+            this.setState({ fosforoLowSeasonGeneratedWater });
+          },
+          setNitratosHighSeasonGeneratedWater: (
+            nitratosHighSeasonGeneratedWater
+          ) => {
+            this.setState({ nitratosHighSeasonGeneratedWater });
+          },
+          setNitratosLowSeasonGeneratedWater: (
+            nitratosLowSeasonGeneratedWater
+          ) => {
+            this.setState({ nitratosLowSeasonGeneratedWater });
+          },
+          setSulfatosHighSeasonGeneratedWater: (
+            sulfatosHighSeasonGeneratedWater
+          ) => {
+            this.setState({ sulfatosHighSeasonGeneratedWater });
+          },
+          setSulfatosLowSeasonGeneratedWater: (
+            sulfatosLowSeasonGeneratedWater
+          ) => {
+            this.setState({ sulfatosLowSeasonGeneratedWater });
+          },
+          setFerroHighSeasonGeneratedWater: (ferroHighSeasonGeneratedWater) => {
+            this.setState({ ferroHighSeasonGeneratedWater });
+          },
+          setFerroLowSeasonGeneratedWater: (ferroLowSeasonGeneratedWater) => {
+            this.setState({ ferroLowSeasonGeneratedWater });
+          },
+          setAluminumHighSeasonGeneratedWater: (
+            aluminumHighSeasonGeneratedWater
+          ) => {
+            this.setState({ aluminumHighSeasonGeneratedWater });
+          },
+          setAluminumLowSeasonGeneratedWater: (
+            aluminumLowSeasonGeneratedWater
+          ) => {
+            this.setState({ aluminumLowSeasonGeneratedWater });
+          },
+          setCadmioHighSeasonGeneratedWater: (
+            cadmioHighSeasonGeneratedWater
+          ) => {
+            this.setState({ cadmioHighSeasonGeneratedWater });
+          },
+          setCadmioLowSeasonGeneratedWater: (cadmioLowSeasonGeneratedWater) => {
+            this.setState({ cadmioLowSeasonGeneratedWater });
+          },
+          setCobreHighSeasonGeneratedWater: (cobreHighSeasonGeneratedWater) => {
+            this.setState({ cobreHighSeasonGeneratedWater });
+          },
+          setCobreLowSeasonGeneratedWater: (cobreLowSeasonGeneratedWater) => {
+            this.setState({ cobreLowSeasonGeneratedWater });
+          },
+          setCromioHighSeasonGeneratedWater: (
+            cromioHighSeasonGeneratedWater
+          ) => {
+            this.setState({ cromioHighSeasonGeneratedWater });
+          },
+          setCromioLowSeasonGeneratedWater: (cromioLowSeasonGeneratedWater) => {
+            this.setState({ cromioLowSeasonGeneratedWater });
+          },
+          setManganesHighSeasonGeneratedWater: (
+            manganesHighSeasonGeneratedWater
+          ) => {
+            this.setState({ manganesHighSeasonGeneratedWater });
+          },
+          setManganesLowSeasonGeneratedWater: (
+            manganesLowSeasonGeneratedWater
+          ) => {
+            this.setState({ manganesLowSeasonGeneratedWater });
+          },
+
+          // águas residuais tratadas
+          setPhHighSeasonTreatedWater: (phHighSeasonTreatedWater) => {
+            this.setState({ phHighSeasonTreatedWater });
+          },
+          setPhLowSeasonTreatedWater: (phLowSeasonTreatedWater) => {
+            this.setState({ phLowSeasonTreatedWater });
+          },
+          setConductivityHighSeasonTreatedWater: (
+            conductivityHighSeasonTreatedWater
+          ) => {
+            this.setState({ conductivityHighSeasonTreatedWater });
+          },
+          setConductivityLowSeasonTreatedWater: (
+            conductivityLowSeasonTreatedWater
+          ) => {
+            this.setState({ conductivityLowSeasonTreatedWater });
+          },
+          setTurbidityHighSeasonTreatedWater: (
+            turbidityHighSeasonTreatedWater
+          ) => {
+            this.setState({ turbidityHighSeasonTreatedWater });
+          },
+          setTurbidityLowSeasonTreatedWater: (
+            turbidityLowSeasonTreatedWater
+          ) => {
+            this.setState({ turbidityLowSeasonTreatedWater });
+          },
+          setCQOHighSeasonTreatedWater: (CQOHighSeasonTreatedWater) => {
+            this.setState({ CQOHighSeasonTreatedWater });
+          },
+          setCQOLowSeasonTreatedWater: (CQOLowSeasonTreatedWater) => {
+            this.setState({ CQOLowSeasonTreatedWater });
+          },
+          setCBOHighSeasonTreatedWater: (CBOHighSeasonTreatedWater) => {
+            this.setState({ CBOHighSeasonTreatedWater });
+          },
+          setCBOLowSeasonTreatedWater: (CBOLowSeasonTreatedWater) => {
+            this.setState({ CBOLowSeasonTreatedWater });
+          },
+          setSSTHighSeasonTreatedWater: (SSTHighSeasonTreatedWater) => {
+            this.setState({ SSTHighSeasonTreatedWater });
+          },
+          setSSTLowSeasonTreatedWater: (SSTLowSeasonTreatedWater) => {
+            this.setState({ SSTLowSeasonTreatedWater });
+          },
+          setNTKHighSeasonTreatedWater: (NTKHighSeasonTreatedWater) => {
+            this.setState({ NTKHighSeasonTreatedWater });
+          },
+          setNTKLowSeasonTreatedWater: (NTKLowSeasonTreatedWater) => {
+            this.setState({ NTKLowSeasonTreatedWater });
+          },
+          setFenoisHighSeasonTreatedWater: (fenoisHighSeasonTreatedWater) => {
+            this.setState({ fenoisHighSeasonTreatedWater });
+          },
+          setFenoisLowSeasonTreatedWater: (fenoisLowSeasonTreatedWater) => {
+            this.setState({ fenoisLowSeasonTreatedWater });
+          },
+          setFosforoHighSeasonTreatedWater: (fosforoHighSeasonTreatedWater) => {
+            this.setState({ fosforoHighSeasonTreatedWater });
+          },
+          setFosforoLowSeasonTreatedWater: (fosforoLowSeasonTreatedWater) => {
+            this.setState({ fosforoLowSeasonTreatedWater });
+          },
+          setNitratosHighSeasonTreatedWater: (
+            nitratosHighSeasonTreatedWater
+          ) => {
+            this.setState({ nitratosHighSeasonTreatedWater });
+          },
+          setNitratosLowSeasonTreatedWater: (nitratosLowSeasonTreatedWater) => {
+            this.setState({ nitratosLowSeasonTreatedWater });
+          },
+          setSulfatosHighSeasonTreatedWater: (
+            sulfatosHighSeasonTreatedWater
+          ) => {
+            this.setState({ sulfatosHighSeasonTreatedWater });
+          },
+          setSulfatosLowSeasonTreatedWater: (sulfatosLowSeasonTreatedWater) => {
+            this.setState({ sulfatosLowSeasonTreatedWater });
+          },
+          setFerroHighSeasonTreatedWater: (ferroHighSeasonTreatedWater) => {
+            this.setState({ ferroHighSeasonTreatedWater });
+          },
+          setFerroLowSeasonTreatedWater: (ferroLowSeasonTreatedWater) => {
+            this.setState({ ferroLowSeasonTreatedWater });
+          },
+          setAluminumHighSeasonTreatedWater: (
+            aluminumHighSeasonTreatedWater
+          ) => {
+            this.setState({ aluminumHighSeasonTreatedWater });
+          },
+          setAluminumLowSeasonTreatedWater: (aluminumLowSeasonTreatedWater) => {
+            this.setState({ aluminumLowSeasonTreatedWater });
+          },
+          setCadmioHighSeasonTreatedWater: (cadmioHighSeasonTreatedWater) => {
+            this.setState({ cadmioHighSeasonTreatedWater });
+          },
+          setCadmioLowSeasonTreatedWater: (cadmioLowSeasonTreatedWater) => {
+            this.setState({ cadmioLowSeasonTreatedWater });
+          },
+          setCobreHighSeasonTreatedWater: (cobreHighSeasonTreatedWater) => {
+            this.setState({ cobreHighSeasonTreatedWater });
+          },
+          setCobreLowSeasonTreatedWater: (cobreLowSeasonTreatedWater) => {
+            this.setState({ cobreLowSeasonTreatedWater });
+          },
+          setCromioHighSeasonTreatedWater: (cromioHighSeasonTreatedWater) => {
+            this.setState({ cromioHighSeasonTreatedWater });
+          },
+          setCromioLowSeasonTreatedWater: (cromioLowSeasonTreatedWater) => {
+            this.setState({ cromioLowSeasonTreatedWater });
+          },
+          setManganesHighSeasonTreatedWater: (
+            manganesHighSeasonTreatedWater
+          ) => {
+            this.setState({ manganesHighSeasonTreatedWater });
+          },
+          setManganesLowSeasonTreatedWater: (manganesLowSeasonTreatedWater) => {
+            this.setState({ manganesLowSeasonTreatedWater });
+          },
+
+          //IMAGES
+          producedAndBoughtGrapesImage: this.state.producedAndBoughtGrapesImage,
+          setProducedAndBoughtGrapesImage: (producedAndBoughtGrapesImage) => {
+            this.setState({ producedAndBoughtGrapesImage });
+          },
+          producedAndBoughtMustImage: this.state.producedAndBoughtMustImage,
+          setProducedAndBoughtMustImage: (producedAndBoughtMustImage) => {
+            this.setState({ producedAndBoughtMustImage });
+          },
+          mustFromProducedGrapesImage: this.state.mustFromProducedGrapesImage,
+          setMustFromProducedGrapesImage: (mustFromProducedGrapesImage) => {
+            this.setState({ mustFromProducedGrapesImage });
+          },
+          totalWineProportionsByTypeImage:
+            this.state.totalWineProportionsByTypeImage,
+          setTotalWineProportionsByTypeImage: (
+            totalWineProportionsByTypeImage
+          ) => {
+            this.setState({ totalWineProportionsByTypeImage });
+          },
+          waterConsumptionBySourceImage:
+            this.state.waterConsumptionBySourceImage,
+          setWaterConsumptionBySourceImage: (waterConsumptionBySourceImage) => {
+            this.setState({ waterConsumptionBySourceImage });
+          },
+          waterConsumptionByWinemakingProcessImage:
+            this.state.waterConsumptionByWinemakingProcessImage,
+          setWaterConsumptionByWinemakingProcessImage: (
+            waterConsumptionByWinemakingProcessImage
+          ) => {
+            this.setState({ waterConsumptionByWinemakingProcessImage });
+          },
+          waterConsumptionByBottlingProcessImage:
+            this.state.waterConsumptionByBottlingProcessImage,
+          setWaterConsumptionByBottlingProcessImage: (
+            waterConsumptionByBottlingProcessImage
+          ) => {
+            this.setState({ waterConsumptionByBottlingProcessImage });
+          },
+          waterConsumptionByProcessImage:
+            this.state.waterConsumptionByProcessImage,
+          setWaterConsumptionByProcessImage: (
+            waterConsumptionByProcessImage
+          ) => {
+            this.setState({ waterConsumptionByProcessImage });
+          },
+          pollutantRemovalPercentageImage:
+            this.state.pollutantRemovalPercentageImage,
+          setPollutantRemovalPercentageImage: (
+            pollutantRemovalPercentageImage
+          ) => {
+            this.setState({ pollutantRemovalPercentageImage });
+          },
+          electricityBySourceImage: this.state.electricityBySourceImage,
+          setElectricityBySourceImage: (electricityBySourceImage) => {
+            this.setState({ electricityBySourceImage });
+          },
+          electricityProducedBySourceImage:
+            this.state.electricityProducedBySourceImage,
+          setElectricityProducedBySourceImage: (
+            electricityProducedBySourceImage
+          ) => {
+            this.setState({ electricityProducedBySourceImage });
+          },
+          electricityConsumedInCompanyInstalationsImage:
+            this.state.electricityConsumedInCompanyInstalationsImage,
+          setElectricityConsumedInCompanyInstalationsImage: (
+            electricityConsumedInCompanyInstalationsImage
+          ) => {
+            this.setState({ electricityConsumedInCompanyInstalationsImage });
+          },
+          isCompleted1: this.state.isCompleted1,
+          isCompleted2: this.state.isCompleted2,
+          isCompleted3: this.state.isCompleted3,
+          isCompleted4: this.state.isCompleted4,
+          isCompleted5: this.state.isCompleted5,
+          isCompleted6: this.state.isCompleted6,
+          isCompleted7: this.state.isCompleted7,
+          isCompleted8: this.state.isCompleted8,
+          isCompleted9: this.state.isCompleted9,
+          isCompleted10: this.state.isCompleted10,
+          isCompleted11: this.state.isCompleted11,
+          isCompleted12: this.state.isCompleted12,
+          setIsCompleted1: (isCompleted1) => {
+            this.setState({ isCompleted1 });
+          },
+          setIsCompleted2: (isCompleted2) => {
+            this.setState({ isCompleted2 });
+          },
+          setIsCompleted3: (isCompleted3) => {
+            this.setState({ isCompleted3 });
+          },
+          setIsCompleted4: (isCompleted4) => {
+            this.setState({ isCompleted4 });
+          },
+          setIsCompleted5: (isCompleted5) => {
+            this.setState({ isCompleted5 });
+          },
+          setIsCompleted6: (isCompleted6) => {
+            this.setState({ isCompleted6 });
+          },
+          setIsCompleted7: (isCompleted7) => {
+            this.setState({ isCompleted7 });
+          },
+          setIsCompleted8: (isCompleted8) => {
+            this.setState({ isCompleted8 });
+          },
+          setIsCompleted9: (isCompleted9) => {
+            this.setState({ isCompleted9 });
+          },
+          setIsCompleted10: (isCompleted10) => {
+            this.setState({ isCompleted10 });
+          },
+          setIsCompleted11: (isCompleted11) => {
+            this.setState({ isCompleted11 });
+          },
+          setIsCompleted12: (isCompleted12) => {
+            this.setState({ isCompleted12 });
           },
         }}
       >

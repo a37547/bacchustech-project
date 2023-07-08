@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import banner from "../../assets/images/banner.jpg";
 import IntroducaoDeDados from "../../pages/introducaodedados";
 import Planeamento from "../../pages/planeamento";
-import Relatorios from "../../pages/relatorios";
+import Relatorios from "../../pages/reports";
 
 class Sidebar extends Component {
   state = { activeMenu: "dataIntroduction" };

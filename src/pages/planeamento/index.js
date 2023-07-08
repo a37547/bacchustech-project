@@ -25,7 +25,7 @@ class Planeamento extends Component {
   state = { years: [], selectedYear: {} };
 
   componentDidMount() {
-    const years = [{ number: 2021 }, { number: 2022 }];
+    const years = [{ number: 2021 }, { number: 2022 }, { number: 2023 }];
 
     const selectedYear = years.find(
       (year) => year.number === new Date().getFullYear()
@@ -50,11 +50,10 @@ class Planeamento extends Component {
                   fontSize: "48px",
                 }}
               >
-                Metas
+                Plano de ações
               </span>
             </div>
-
-            <Row className="mt-4">
+            <Row className="mt-4 mb-4">
               <Col xs={4} sm={3} md={2} lg={1}>
                 <Dropdown>
                   <Dropdown.Toggle
@@ -90,8 +89,35 @@ class Planeamento extends Component {
                 </Dropdown>
               </Col>
             </Row>
+            <Alert>
+              Medir e registar o os valores de volume de água consumidos.
+            </Alert>
+            <Alert>
+              Medir e registar o os valores de volume médio de água utilizado na
+              lavagem de equipamentos em cada processo de produção.
+            </Alert>
+            <Alert>
+              Medir e registar o os valores do parâmetro Carência Química de
+              Oxigénio (CQO) do efluente tratado para comparação com os limites
+              estipulados por lei.
+            </Alert>
+            <Alert>
+              Encaminhar as águas residuais para um tratamento adequado,
+              cumprindo os parâmetros de descarga estabelecidos pelo Decreto-Lei
+              nº 236/98.
+            </Alert>
+          </div>
+        </Row>
+      </Fragment>
+    );
+  }
+}
 
-            <Accordion className="mt-4">
+export default Planeamento;
+
+/*
+
+<Accordion className="mt-4">
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
                   <Container fluid>
@@ -292,12 +318,4 @@ class Planeamento extends Component {
                   </Row>
                 </Accordion.Body>
               </Accordion.Item>
-            </Accordion>
-          </div>
-        </Row>{" "}
-      </Fragment>
-    );
-  }
-}
-
-export default Planeamento;
+            </Accordion>*/
